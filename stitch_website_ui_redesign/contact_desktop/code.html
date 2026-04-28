@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#e4e2e2",
+                    "on-secondary-container": "#785a1a",
+                    "tertiary-fixed": "#e1e3e4",
+                    "surface-dim": "#dbd9d9",
+                    "outline": "#75777e",
+                    "secondary-container": "#fed488",
+                    "on-tertiary-fixed": "#191c1d",
+                    "on-secondary-fixed": "#261900",
+                    "inverse-on-surface": "#f2f0f0",
+                    "on-background": "#1b1c1c",
+                    "surface-container-high": "#eae8e7",
+                    "secondary": "#775a19",
+                    "secondary-fixed": "#ffdea5",
+                    "on-secondary-fixed-variant": "#5d4201",
+                    "tertiary": "#000000",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed-variant": "#39475f",
+                    "inverse-surface": "#303030",
+                    "primary-fixed": "#d6e3ff",
+                    "inverse-primary": "#b9c7e4",
+                    "tertiary-fixed-dim": "#c5c7c8",
+                    "primary-fixed-dim": "#b9c7e4",
+                    "outline-variant": "#c5c6cd",
+                    "tertiary-container": "#191c1d",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#828485",
+                    "primary-container": "#0d1c32",
+                    "on-error": "#ffffff",
+                    "surface-container": "#efeded",
+                    "on-surface": "#1b1c1c",
+                    "error": "#ba1a1a",
+                    "secondary-fixed-dim": "#e9c176",
+                    "primary": "#000000",
+                    "surface-bright": "#fbf9f8",
+                    "on-surface-variant": "#44474d",
+                    "on-primary": "#ffffff",
+                    "on-primary-container": "#76849f",
+                    "on-primary-fixed": "#0d1c32",
+                    "background": "#fbf9f8",
+                    "surface-tint": "#515f78",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "surface": "#fbf9f8",
+                    "surface-container-low": "#f5f3f3",
+                    "surface-container-highest": "#e4e2e2",
+                    "on-tertiary-fixed-variant": "#454748"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "section-padding": "120px",
+                    "container-max": "1280px",
+                    "stack-md": "32px",
+                    "stack-sm": "16px",
+                    "stack-lg": "64px",
+                    "gutter": "32px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Akony", "sans-serif"],
+                    "body-md": ["Manrope", "sans-serif"],
+                    "display-xl": ["Akony", "sans-serif"],
+                    "body-lg": ["Manrope", "sans-serif"],
+                    "label-caps": ["Manrope", "sans-serif"],
+                    "headline-md": ["Akony", "sans-serif"]
+            },
+            "fontSize": {
+                    "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.7", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "700"}],
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        @font-face {
+            font-family: 'Akony';
+            src: url('https://fonts.cdnfonts.com/s/77402/Akony.woff') format('woff');
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-[0_40px_40px_-15px_rgba(10,25,47,0.04)]">
+<div class="flex justify-between items-center h-24 px-12 max-w-[1440px] mx-auto">
+<div class="text-2xl font-black tracking-tighter text-slate-900">Elite Construct</div>
+<nav class="hidden md:flex items-center gap-10">
+<a class="font-['Manrope'] font-bold tracking-widest uppercase text-xs text-slate-500 hover:text-amber-500 transition-colors" href="#">Portfolio</a>
+<a class="font-['Manrope'] font-bold tracking-widest uppercase text-xs text-slate-500 hover:text-amber-500 transition-colors" href="#">Services</a>
+<a class="font-['Manrope'] font-bold tracking-widest uppercase text-xs text-slate-500 hover:text-amber-500 transition-colors" href="#">Company History</a>
+<a class="font-['Manrope'] font-bold tracking-widest uppercase text-xs text-amber-500 border-b border-amber-500 pb-1" href="#">Contact</a>
+</nav>
+<button class="bg-primary text-on-primary px-8 py-3 font-label-caps text-label-caps hover:bg-slate-800 transition-all active:scale-95">
+                Enquire Now
+            </button>
+</div>
+</header>
+<main class="pt-24 min-h-screen">
+<!-- Hero Section / Title -->
+<section class="pt-stack-lg pb-stack-md px-12 max-w-[1440px] mx-auto">
+<div class="max-w-3xl">
+<span class="font-label-caps text-label-caps text-on-secondary-container bg-secondary-container px-3 py-1 rounded-sm mb-4 inline-block">GET IN TOUCH</span>
+<h1 class="font-display-xl text-display-xl text-primary mb-6">Build Your Legacy.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                    Connect with our Coimbatore headquarters to discuss your upcoming project. Our team of expert architects and engineers is ready to bring your vision to life.
+                </p>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="pb-section-padding px-12 max-w-[1440px] mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Info & Map -->
+<div class="lg:col-span-5 space-y-12">
+<!-- Callback Promise Card -->
+<div class="bg-primary-container p-10 rounded-lg shadow-lg border border-primary-container/10">
+<div class="flex items-start gap-6">
+<div class="bg-secondary text-on-secondary p-4 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl" data-icon="schedule">schedule</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-white mb-2">2-Hour Callback</h3>
+<p class="text-on-primary-container font-body-md">We value your time. Our specialist team guarantees a response to your enquiry within two business hours.</p>
+</div>
+</div>
+</div>
+<!-- Address & Contact -->
+<div class="space-y-8">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-secondary" data-icon="location_on">location_on</span>
+<div>
+<h4 class="font-label-caps text-label-caps text-primary mb-1">HEADQUARTERS</h4>
+<p class="font-body-lg text-on-surface-variant">42, Avinashi Road, Race Course,<br/>Coimbatore, Tamil Nadu 641018</p>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-secondary" data-icon="mail">mail</span>
+<div>
+<h4 class="font-label-caps text-label-caps text-primary mb-1">ENQUIRIES</h4>
+<p class="font-body-lg text-on-surface-variant">concierge@eliteconstruct.in</p>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-secondary" data-icon="phone_in_talk">phone_in_talk</span>
+<div>
+<h4 class="font-label-caps text-label-caps text-primary mb-1">PHONE</h4>
+<p class="font-body-lg text-on-surface-variant">+91 422 456 7890</p>
+</div>
+</div>
+</div>
+<!-- Map Integration -->
+<div class="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl border border-slate-200">
+<img alt="Location Map" class="w-full h-full object-cover" data-alt="Minimalist architectural map showing Coimbatore city center with high-contrast monochrome styling and golden location pin marker" data-location="Coimbatore" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqnOu6ezFYzlsMa9BZKR_kkbp-kStgrvqoXBBMQGnRLUMgZd2Zt5JnjNnm4psbG1E0x3vnps5gjmtO-Ot5qDif0fhRQhTaSn1JH5DtOrxvPK8eg9T9ua7At8ySESuumuyptobesfvmhVxyT0WhFnkQy_wMWDu_mjXEkjq7J1iWy1jBXsnuOdl4bnKqVvzFm-C2rN9jIbNddZNsSAq-pFr-J-i4lr81nEVMYBCrEL_pR8MmqvvbjYZ5IUyvHJt4U78ueGhyKRR6Bx4"/>
+<div class="absolute inset-0 bg-slate-900/10 hover:bg-transparent transition-all duration-500"></div>
+</div>
+</div>
+<!-- Right Column: Form -->
+<div class="lg:col-span-7 lg:pl-16">
+<div class="bg-surface-container-lowest p-12 shadow-[0_40px_40px_-15px_rgba(10,25,47,0.04)] border border-slate-100 rounded-lg">
+<form action="#" class="space-y-8" method="POST">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="relative">
+<label class="font-label-caps text-label-caps text-primary block mb-3" for="name">FULL NAME</label>
+<input class="w-full bg-transparent border-b border-slate-200 py-3 focus:outline-none focus:border-secondary transition-all placeholder:text-slate-300 font-body-md" id="name" name="name" placeholder="John Doe" type="text"/>
+</div>
+<div class="relative">
+<label class="font-label-caps text-label-caps text-primary block mb-3" for="phone">PHONE NUMBER</label>
+<input class="w-full bg-transparent border-b border-slate-200 py-3 focus:outline-none focus:border-secondary transition-all placeholder:text-slate-300 font-body-md" id="phone" name="phone" placeholder="+91 00000 00000" type="tel"/>
+</div>
+</div>
+<div class="relative">
+<label class="font-label-caps text-label-caps text-primary block mb-3" for="email">EMAIL ADDRESS</label>
+<input class="w-full bg-transparent border-b border-slate-200 py-3 focus:outline-none focus:border-secondary transition-all placeholder:text-slate-300 font-body-md" id="email" name="email" placeholder="john@example.com" type="email"/>
+</div>
+<div class="relative">
+<label class="font-label-caps text-label-caps text-primary block mb-3" for="project-type">PROJECT TYPE</label>
+<select class="w-full bg-transparent border-b border-slate-200 py-3 focus:outline-none focus:border-secondary transition-all font-body-md appearance-none" id="project-type" name="project-type">
+<option disabled="" selected="" value="">Select a service</option>
+<option value="residential">Luxury Residential</option>
+<option value="commercial">Commercial Complex</option>
+<option value="industrial">Industrial Infrastructure</option>
+<option value="renovation">Heritage Restoration</option>
+</select>
+<div class="absolute right-0 bottom-4 pointer-events-none">
+<span class="material-symbols-outlined text-slate-400" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<div class="relative">
+<label class="font-label-caps text-label-caps text-primary block mb-3" for="message">PROJECT BRIEF (OPTIONAL)</label>
+<textarea class="w-full bg-transparent border-b border-slate-200 py-3 focus:outline-none focus:border-secondary transition-all placeholder:text-slate-300 font-body-md resize-none" id="message" name="message" placeholder="Tell us about your vision..." rows="4"></textarea>
+</div>
+<div class="pt-4">
+<button class="group relative w-full md:w-auto bg-primary text-on-primary px-16 py-5 font-label-caps text-label-caps overflow-hidden flex items-center justify-center gap-3" type="submit">
+<span class="relative z-10">INITIATE CONSULTATION</span>
+<span class="material-symbols-outlined text-secondary group-hover:translate-x-1 transition-transform relative z-10" data-icon="arrow_forward">arrow_forward</span>
+<div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-1 bg-secondary group-hover:w-full transition-all duration-500"></div>
+</button>
+<p class="text-xs text-slate-400 mt-6 font-body-md">By submitting, you agree to our <a class="underline hover:text-secondary" href="#">Privacy Policy</a>.</p>
+</div>
+</form>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-20 border-t border-amber-500/20 bg-slate-900">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 px-12 max-w-[1440px] mx-auto">
+<div>
+<div class="text-xl font-bold text-white uppercase tracking-widest mb-6">Elite Construct</div>
+<p class="text-slate-400 font-body-md text-sm leading-relaxed max-w-xs">
+                    Coimbatore's premier construction firm, dedicated to architectural excellence and enduring quality since 1994.
+                </p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-4">
+<h5 class="text-amber-500 font-label-caps text-xs">COMPANY</h5>
+<nav class="flex flex-col gap-2">
+<a class="text-slate-400 hover:text-white hover:translate-x-1 transition-transform text-sm font-body-md" href="#">Portfolio</a>
+<a class="text-slate-400 hover:text-white hover:translate-x-1 transition-transform text-sm font-body-md" href="#">Services</a>
+<a class="text-slate-400 hover:text-white hover:translate-x-1 transition-transform text-sm font-body-md" href="#">History</a>
+</nav>
+</div>
+<div class="space-y-4">
+<h5 class="text-amber-500 font-label-caps text-xs">LEGAL</h5>
+<nav class="flex flex-col gap-2">
+<a class="text-slate-400 hover:text-white hover:translate-x-1 transition-transform text-sm font-body-md" href="#">Privacy Policy</a>
+<a class="text-slate-400 hover:text-white hover:translate-x-1 transition-transform text-sm font-body-md" href="#">Contact</a>
+</nav>
+</div>
+</div>
+<div class="flex flex-col md:items-end justify-between">
+<div class="flex gap-6 mb-8 md:mb-0">
+<a class="text-slate-400 hover:text-amber-500 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+</a>
+<a class="text-slate-400 hover:text-amber-500 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="language">language</span>
+</a>
+</div>
+<p class="text-slate-400 font-body-md text-sm">© 2024 Elite Construct Coimbatore. All rights reserved.</p>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Portfolio | ELITE CONSTRUCT</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-on-surface": "#f2f0f0",
+                    "outline-variant": "#c5c6cd",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed": "#191c1d",
+                    "on-surface": "#1b1c1c",
+                    "error": "#ba1a1a",
+                    "inverse-primary": "#b9c7e4",
+                    "primary-fixed": "#d6e3ff",
+                    "secondary-fixed-dim": "#e9c176",
+                    "on-secondary-container": "#785a1a",
+                    "surface-container-low": "#f5f3f3",
+                    "on-secondary-fixed": "#261900",
+                    "inverse-surface": "#303030",
+                    "surface-container-highest": "#e4e2e2",
+                    "tertiary-fixed": "#e1e3e4",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#0d1c32",
+                    "on-primary-container": "#76849f",
+                    "secondary-fixed": "#ffdea5",
+                    "surface": "#fbf9f8",
+                    "surface-dim": "#dbd9d9",
+                    "surface-tint": "#515f78",
+                    "primary-container": "#0d1c32",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#fed488",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-container": "#828485",
+                    "error-container": "#ffdad6",
+                    "on-surface-variant": "#44474d",
+                    "surface-container-high": "#eae8e7",
+                    "on-primary-fixed-variant": "#39475f",
+                    "tertiary-container": "#191c1d",
+                    "on-secondary-fixed-variant": "#5d4201",
+                    "surface-bright": "#fbf9f8",
+                    "primary": "#000000",
+                    "tertiary-fixed-dim": "#c5c7c8",
+                    "on-background": "#1b1c1c",
+                    "surface-variant": "#e4e2e2",
+                    "primary-fixed-dim": "#b9c7e4",
+                    "background": "#fbf9f8",
+                    "secondary": "#775a19",
+                    "surface-container": "#efeded",
+                    "on-primary": "#ffffff",
+                    "outline": "#75777e",
+                    "tertiary": "#000000",
+                    "on-tertiary-fixed-variant": "#454748"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "stack-sm": "16px",
+                    "stack-lg": "64px",
+                    "section-padding": "120px",
+                    "stack-md": "32px",
+                    "unit": "8px",
+                    "gutter": "32px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "body-md": ["Manrope"],
+                    "label-caps": ["Manrope"],
+                    "body-lg": ["Manrope"],
+                    "headline-lg": ["Manrope"],
+                    "headline-md": ["Manrope"],
+                    "display-xl": ["Manrope"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.7", "fontWeight": "400"}],
+                    "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "800"}],
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "display-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .before-after-slider:hover .slider-handle {
+            background-color: #D4AF37;
+        }
+        .text-shadow-subtle {
+            text-shadow: 0 2px 4px rgba(10, 25, 47, 0.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 border-b border-[#D4AF37]/20 bg-white/90 backdrop-blur-md shadow-[0_40px_40px_rgba(10,25,47,0.04)]">
+<nav class="flex justify-between items-center max-w-7xl mx-auto px-8 h-24">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary" style="font-size: 32px;">architecture</span>
+<span class="text-2xl font-black tracking-tighter text-[#0A192F]">ELITE CONSTRUCT</span>
+</div>
+<div class="hidden md:flex items-center gap-10 font-['Manrope'] tracking-widest uppercase text-sm font-bold">
+<a class="text-slate-400 hover:text-[#D4AF37] transition-colors" href="#">Home</a>
+<a class="text-[#D4AF37] border-b-2 border-[#D4AF37] pb-1" href="#">Portfolio</a>
+<a class="text-slate-400 hover:text-[#D4AF37] transition-colors" href="#">Services</a>
+<a class="text-slate-400 hover:text-[#D4AF37] transition-colors" href="#">About</a>
+<button class="bg-[#0A192F] text-white px-8 py-3 hover:bg-[#D4AF37] transition-all duration-500 scale-100 active:scale-95">
+                    Enquire Now
+                </button>
+</div>
+</nav>
+</header>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="relative h-[707px] flex items-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover grayscale-[20%] brightness-75" data-alt="Modern architectural residential home with clean white lines, large glass windows, and gold accents at dusk with warm interior lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVxl8K2mm4uGnzA73GY3Di33RXcb0Ideq0eOFgGk7b3LLclWPncZmGZQ5qqzUrCUxxhriXNBE2Sx3xsC86GOg8eV2-VJ5qhWFiHspDvJRD5R8O6lQjl-pDUsuG-wW7fs9sVLKlii9ARyORIn2iMGuvGqqNXFpbxh8Wu2pGA3Um373-Z2SUO_hHcgjHogqLsHKIHJCrRkrKo4YuZEe-_ZcdtsFrFci8f9MzzdKJl62s0wGRko3FCeL8glQ0nH1EZnBPkqhhAbBWUdc"/>
+<div class="absolute inset-0 bg-gradient-to-r from-[#0A192F]/80 to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-7xl mx-auto px-8 w-full">
+<div class="max-w-2xl">
+<span class="inline-block px-4 py-1 border border-[#D4AF37] text-[#D4AF37] text-label-caps mb-6">ARCHITECTURAL CONFIDENCE</span>
+<h1 class="font-display-xl text-white mb-8">Crafting Legacies in Coimbatore</h1>
+<p class="text-body-lg text-slate-200 mb-10 leading-relaxed">Explore our gallery of uncompromising quality—where structural integrity meets visionary design for the discerning few.</p>
+</div>
+</div>
+</section>
+<!-- Portfolio Showcase - Project 1 (Before/After) -->
+<section class="py-section-padding max-w-7xl mx-auto px-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<div class="lg:col-span-7">
+<div class="relative group aspect-[16/10] overflow-hidden bg-surface-container shadow-[0_40px_40px_rgba(10,25,47,0.04)]">
+<!-- Simulated Before/After Slider Container -->
+<div class="relative w-full h-full cursor-col-resize before-after-slider">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="High-end modern living room with luxury furniture and minimalist interior design after renovation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_8evb8mU4mKZgJxcagNIgWTPKMnyLsIhWSsyvwIS9AX74CBppbMOdwnLsqu23P-28fi9v4z-etcENIMlj3LVSj0kcicSjms2T4juEvJjxZBgYr6HEKsuuZxpl5YMdv8zVwHYL0b6RTog3yI84ZeF6nNGHSgxlzDHeEnqbTXtEF2CdjvDTwvAnLXRTLrRL7k4lQcj4_m4lZG0MFqN_NScGScMdLbJ0VpiuyJJlaq2LS-0tYKkXnkgC4GZrdfuOamJGWD7hPQDWHB8"/>
+<div class="absolute inset-0 w-1/2 overflow-hidden border-r-2 border-[#D4AF37] z-10">
+<img class="absolute inset-0 w-[200%] h-full object-cover grayscale" data-alt="Empty dusty concrete building interior before luxury renovation, showing raw structure and pillars." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBH81yR8HnyHX0FUkPVPqPVgBy33ezlJbT5ybVkaaqrS2VYXsRb9A3veGyxyACqyAil3wZdd0WCRpih8aBEubMpIn1CyZjejiaAhJ6Ollh6ndBCivwVrTHECI8In5ucpu7rbYgGp7uBS97-CLi6v9aIGINQevG937lReZdc0QCDHNEPGTZepzw2rTw-FJJGN8C2ZnsMQwKD0AI1UYZGSIvPJGVT_HqTWbpEGsrmQpDm0zAna06PQ21aOi0vBjwnTnbcHaqMOO9RshQ"/>
+</div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 slider-handle w-12 h-12 rounded-full bg-[#0A192F] flex items-center justify-center text-white transition-colors duration-300">
+<span class="material-symbols-outlined">unfold_more</span>
+</div>
+<div class="absolute bottom-6 left-6 z-20 flex gap-4">
+<span class="bg-[#0A192F]/80 text-white px-3 py-1 text-[10px] font-bold tracking-widest uppercase backdrop-blur-sm">Before</span>
+<span class="bg-[#D4AF37]/80 text-white px-3 py-1 text-[10px] font-bold tracking-widest uppercase backdrop-blur-sm ml-[350px]">After</span>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-5 pl-0 lg:pl-12">
+<div class="flex items-center gap-4 mb-6">
+<span class="bg-secondary-container text-on-secondary-container px-4 py-1 text-label-caps rounded-full">Premium Finish</span>
+<span class="text-outline text-label-caps">14 MONTHS</span>
+</div>
+<h2 class="font-headline-lg text-[#0A192F] mb-6 uppercase">The Heritage Rebirth</h2>
+<div class="space-y-8">
+<div>
+<h4 class="text-label-caps text-secondary mb-2">THE CHALLENGE</h4>
+<p class="text-body-md text-on-surface-variant">Converting a 40-year-old traditional structure into a contemporary luxury residence without compromising structural stability.</p>
+</div>
+<div>
+<h4 class="text-label-caps text-secondary mb-2">THE SOLUTION</h4>
+<p class="text-body-md text-on-surface-variant">Reinforced micro-piling coupled with an open-plan glass facade that invites the surrounding landscape inward.</p>
+</div>
+<button class="flex items-center gap-3 text-[#0A192F] font-bold uppercase tracking-widest text-sm hover:translate-x-2 transition-transform duration-300">
+                            View Full Case Study
+                            <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Section -->
+<section class="bg-[#0A192F] py-24 text-white">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+<div>
+<h3 class="font-display-xl text-[#D4AF37] mb-2">15+</h3>
+<p class="text-label-caps text-slate-400">Years of Mastery</p>
+</div>
+<div>
+<h3 class="font-display-xl text-[#D4AF37] mb-2">120</h3>
+<p class="text-label-caps text-slate-400">Luxury Estates</p>
+</div>
+<div>
+<h3 class="font-display-xl text-[#D4AF37] mb-2">08</h3>
+<p class="text-label-caps text-slate-400">Design Awards</p>
+</div>
+<div>
+<h3 class="font-display-xl text-[#D4AF37] mb-2">98%</h3>
+<p class="text-label-caps text-slate-400">Client Retention</p>
+</div>
+</div>
+</section>
+<!-- Featured Projects Grid -->
+<section class="py-section-padding max-w-7xl mx-auto px-8">
+<div class="flex justify-between items-end mb-16">
+<div>
+<h2 class="font-headline-lg text-[#0A192F] uppercase mb-4">Curated Portfolio</h2>
+<p class="text-body-md text-on-surface-variant max-w-xl">A selection of our most ambitious architectural undertakings across South India.</p>
+</div>
+<div class="flex gap-4">
+<button class="w-12 h-12 border border-[#D4AF37]/30 flex items-center justify-center hover:bg-[#D4AF37] hover:text-white transition-all duration-300">
+<span class="material-symbols-outlined">west</span>
+</button>
+<button class="w-12 h-12 border border-[#D4AF37]/30 flex items-center justify-center hover:bg-[#D4AF37] hover:text-white transition-all duration-300">
+<span class="material-symbols-outlined">east</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Portfolio Card 1 -->
+<div class="group relative bg-white overflow-hidden shadow-[0_40px_40px_rgba(10,25,47,0.04)] border border-outline-variant/10">
+<div class="aspect-[4/5] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" data-alt="Luxury coastal villa with infinity pool and architectural lighting at sunset." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuNcDUPb6hsFiB-U075LdgL_CNjGpksEcAl6rjEv-yH4zm533iVR1O4Vo0U3yeH4ra0RSwcNZ05K3FfPuCJy8ZqVpstJ24zoHinWC6-RtQDBLAgag0mP82JRL6xdiO00vTRprgdLX0up_UN9LjCTVmNq46MqWNT2V_sJ5eosKXwKGrAQDEKLh4f1qInVvtyRT0WnhU0IF5RVjdaWivRl43Zpf1AiKSWkmWvkqeerRiLJYr1iJbmPROVzY8NTH8bQg5oaCb1ZEQkQ0"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-[#0A192F] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+<span class="text-[#D4AF37] text-label-caps mb-2">ELITE SERIES</span>
+<h3 class="text-white font-headline-md mb-4">Azure Coast Villa</h3>
+<div class="h-px w-full bg-[#D4AF37]/30 mb-4 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left"></div>
+<p class="text-slate-300 text-body-md opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100">Mediterranean-inspired design with sustainable cooling systems.</p>
+</div>
+</div>
+<!-- Portfolio Card 2 -->
+<div class="group relative bg-white overflow-hidden shadow-[0_40px_40px_rgba(10,25,47,0.04)] border border-outline-variant/10">
+<div class="aspect-[4/5] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" data-alt="Ultra-modern brutalist concrete home surrounded by lush green pine trees with large floor to ceiling windows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX0u2kvtWgqv5gpyQTCq4D4l6EqdEkZHD9DwFev6npK0uBQ6tDJ1-Xx1lS9GFYwsefPyffybXsKJf1vFvu9Uh1zjN4yEa39d42AH8nnds_ZTLfcpiEfsh7FWtno59003tqmDVtR9B2p_-OhT_xcAO4H9bdz1ohPlF4KbORXlc54qzLJ_Ur51i2dJgisLvL8OUnbZLAay1pS4ZHkrygD-BpE8nGMVT3F9m_dyTZVdoLcA4LMbwvn3E71MJkIpdMa-wchdXcRhHAI5Q"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-[#0A192F] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+<span class="text-[#D4AF37] text-label-caps mb-2">BESPOKE FINISH</span>
+<h3 class="text-white font-headline-md mb-4">The Monolith</h3>
+<div class="h-px w-full bg-[#D4AF37]/30 mb-4 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left"></div>
+<p class="text-slate-300 text-body-md opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100">Brutalist architecture redefined for tropical climates.</p>
+</div>
+</div>
+<!-- Portfolio Card 3 -->
+<div class="group relative bg-white overflow-hidden shadow-[0_40px_40px_rgba(10,25,47,0.04)] border border-outline-variant/10">
+<div class="aspect-[4/5] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" data-alt="Interior of a luxury penthouse with golden marble floors, velvet furniture, and panoramic city views." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMCmWn45WiJSOA1EBQv1MQu3ipdDAfpWpdr2ge8AkeBhYX3qv0fb4BWKmVjeVvHMbFTrRj8PokWRmxxX8jg0gFxwrBTZUUpgJpugdR7inHvXiCMnuFI0kOKIFkcrMCT0BlIx2rGCrJbQyeOgG3AOzg_gXk6u92-JvOEA2R9LNCYFw9stRB7H5XAmUCOjj8rPZ_vpllUHxPjq8D4M9ZKcYOyvN-nsHUEQ0PZ7-OdkggBylNjRDviOKcI3D-rSaTiG0AJpr55RQIr28"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-[#0A192F] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+<span class="text-[#D4AF37] text-label-caps mb-2">ROYAL FINISH</span>
+<h3 class="text-white font-headline-md mb-4">Skyline Penthouse</h3>
+<div class="h-px w-full bg-[#D4AF37]/30 mb-4 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left"></div>
+<p class="text-slate-300 text-body-md opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100">Bespoke interior craftsmanship featuring Italian marble and gold leafing.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-section-padding bg-surface-container-low border-y border-[#D4AF37]/10">
+<div class="max-w-7xl mx-auto px-8 text-center">
+<h2 class="font-headline-lg text-[#0A192F] mb-8 uppercase">Start Your Vision</h2>
+<p class="text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-12">We are currently accepting exclusive commissions for late 2024. Connect with our architectural consultants today.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-6">
+<button class="bg-[#0A192F] text-white px-12 py-5 font-bold tracking-widest uppercase text-sm hover:bg-[#D4AF37] transition-all duration-500 shadow-xl">
+                        Schedule Consultation
+                    </button>
+<button class="border border-[#0A192F] text-[#0A192F] px-12 py-5 font-bold tracking-widest uppercase text-sm hover:bg-[#0A192F] hover:text-white transition-all duration-500">
+                        Download Brochure
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#0A192F] dark:bg-black w-full py-20 border-t border-[#D4AF37]/10">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 max-w-7xl mx-auto px-8">
+<div class="md:col-span-5">
+<div class="text-xl font-bold text-white tracking-widest mb-6 uppercase">ELITE CONSTRUCT</div>
+<p class="text-slate-400 font-['Manrope'] text-[14px] leading-relaxed max-w-sm mb-8">
+                    Redefining the skylines of South India through architectural confidence and unwavering commitment to quality craftsmanship.
+                </p>
+<div class="flex gap-6">
+<a class="text-slate-400 hover:text-[#D4AF37] transition-colors" href="#">
+<span class="material-symbols-outlined">public</span>
+</a>
+<a class="text-slate-400 hover:text-[#D4AF37] transition-colors" href="#">
+<span class="material-symbols-outlined">photo_camera</span>
+</a>
+<a class="text-slate-400 hover:text-[#D4AF37] transition-colors" href="#">
+<span class="material-symbols-outlined">alternate_email</span>
+</a>
+</div>
+</div>
+<div class="md:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-8">
+<div>
+<h5 class="text-[#D4AF37] text-label-caps mb-6">EXPLORE</h5>
+<ul class="space-y-4">
+<li><a class="text-slate-400 hover:text-[#D4AF37] hover:translate-x-1 transition-all duration-300 block" href="#">Portfolio</a></li>
+<li><a class="text-slate-400 hover:text-[#D4AF37] hover:translate-x-1 transition-all duration-300 block" href="#">Services</a></li>
+<li><a class="text-slate-400 hover:text-[#D4AF37] hover:translate-x-1 transition-all duration-300 block" href="#">Company History</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-[#D4AF37] text-label-caps mb-6">LEGAL</h5>
+<ul class="space-y-4">
+<li><a class="text-slate-400 hover:text-[#D4AF37] hover:translate-x-1 transition-all duration-300 block" href="#">Privacy Policy</a></li>
+<li><a class="text-slate-400 hover:text-[#D4AF37] hover:translate-x-1 transition-all duration-300 block" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div class="col-span-2 md:col-span-1">
+<h5 class="text-[#D4AF37] text-label-caps mb-6">CONTACT</h5>
+<p class="text-slate-400 text-[14px] leading-relaxed">
+                        Trichy Road, Coimbatore<br/>
+                        Tamil Nadu, 641018<br/>
+                        +91 422 456 7890
+                    </p>
+</div>
+</div>
+<div class="md:col-span-12 pt-16 mt-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-slate-500 font-['Manrope'] text-[12px] leading-relaxed">
+                    © 2024 Elite Construction Coimbatore. Built with Architectural Confidence.
+                </p>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-[#D4AF37] rounded-full"></span>
+<span class="text-slate-400 text-[12px] uppercase tracking-widest font-bold">ISO 9001:2015 Certified</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

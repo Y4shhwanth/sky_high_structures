@@ -1,0 +1,138 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { MessageCircle, X, Send } from "lucide-react";
+
+export default function WhatsAppWidget() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [showBadge, setShowBadge] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const phoneNumber = "919876543210";
+
+  useEffect(() => {
+    // Auto-open after 8 seconds on first load
+    const timer = setTimeout(() => {
+      if (!hasInteracted) {
+        setIsOpen(true);
+        setShowBadge(true);
+      }
+    }, 8000);
+    return () => clearTimeout(timer);
+  }, [hasInteracted]);
+
+  const handleToggle = () => {
+    setIsOpen(!isOpen);
+    setShowBadge(false);
+    setHasInteracted(true);
+  };
+
+  const sendWhatsApp = (text?: string) => {
+    const msg = text || message;
+    if (!msg.trim()) return;
+    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(msg)}`, "_blank");
+    setMessage("");
+    setShowBadge(false);
+    setHasInteracted(true);
+  };
+
+  return (
+    <div className="fixed bottom-6 right-6 z-[9999] flex flex-col items-end font-[var(--font-body)]">
+      
+      {/* CHAT POPUP */}
+      <div 
+        className={`transition-all duration-300 origin-bottom-right overflow-hidden bg-white border border-black/5 rounded-2xl shadow-2xl w-[350px] sm:w-[380px] flex flex-col ${
+          isOpen ? "scale-100 opacity-100 h-[480px] mb-4 pointer-events-auto" : "scale-50 opacity-0 h-0 mb-0 pointer-events-none"
+        }`}
+      >
+        {/* HEADER */}
+        <div className="bg-[#25D366] px-5 py-4 flex items-center justify-between shrink-0">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center shrink-0">
+              <MessageCircle fill="white" className="w-6 h-6 text-transparent" />
+            </div>
+            <div className="flex flex-col">
+              <span className="font-bold text-[15px] text-white flex items-center gap-2 tracking-wide">
+                Sky High Structures
+                <span className="w-2 h-2 bg-green-200 rounded-full animate-pulse shadow-[0_0_8px_rgba(187,247,208,0.8)]" />
+              </span>
+              <span className="text-[12px] text-white/90">Typically replies within 1 hour</span>
+            </div>
+          </div>
+          <button 
+            onClick={() => setIsOpen(false)} 
+            className="text-white hover:bg-white/20 p-1.5 rounded-full transition-colors"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* BODY (Web WhatsApp styled background) */}
+        <div 
+          className="flex-1 p-5 overflow-y-auto flex flex-col gap-4"
+          style={{ 
+            backgroundColor: "#E5DDD5", 
+            backgroundImage: "url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png')",
+            backgroundSize: "cover"
+          }}
+        >
+          <div className="bg-white text-[#3D3A35] p-3.5 rounded-tr-xl rounded-b-xl shadow-sm text-[14px] max-w-[85%] leading-relaxed self-start">
+            Hi there! 👋 <br />How can we help you build your dream project today?
+          </div>
+
+          <div className="flex flex-col gap-2 mt-auto">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-black/40 text-center mb-1">Quick Replies</span>
+            {[
+              "I want to build a new house",
+              "I need a renovation quote",
+              "I want a free site visit"
+            ].map((opt) => (
+              <button 
+                key={opt} 
+                onClick={() => sendWhatsApp(opt)} 
+                className="bg-white border border-[#25D366]/30 text-[#25D366] hover:bg-[#25D366] hover:text-white transition-colors text-[13px] font-bold py-2.5 px-4 rounded-full text-left shadow-sm self-start"
+              >
+                {opt}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* INPUT FOOTER */}
+        <div className="bg-[#F0F2F5] p-3 flex gap-2 items-center shrink-0">
+          <input 
+            type="text" 
+            placeholder="Type a message..." 
+            className="flex-1 bg-white border-0 rounded-full px-5 py-3 text-[14px] text-[#3D3A35] outline-none shadow-sm focus:ring-1 focus:ring-[#25D366]"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' && sendWhatsApp()}
+          />
+          <button 
+            onClick={() => sendWhatsApp()} 
+            className="bg-[#25D366] text-white p-3 rounded-full hover:bg-green-600 transition-colors shadow-sm shrink-0 flex items-center justify-center"
+          >
+            <Send className="w-4 h-4 ml-[2px]" />
+          </button>
+        </div>
+      </div>
+
+      {/* FLOATING BUTTON */}
+      <button 
+        onClick={handleToggle} 
+        className="w-[60px] h-[60px] bg-[#25D366] hover:bg-green-600 transition-transform hover:scale-105 active:scale-95 rounded-full shadow-[0_4px_14px_rgba(37,211,102,0.4)] flex items-center justify-center relative"
+      >
+        <MessageCircle fill="white" className="w-[34px] h-[34px] text-transparent" />
+        
+        {/* NOTIFICATION BADGE */}
+        {showBadge && (
+          <div className="absolute -top-1 -right-1 bg-red-500 text-white text-[12px] font-bold w-6 h-6 rounded-full flex items-center justify-center border-2 border-white shadow-sm animate-pulse">
+            1
+          </div>
+        )}
+      </button>
+
+    </div>
+  );
+}

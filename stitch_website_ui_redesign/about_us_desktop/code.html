@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.cdnfonts.com/css/akony" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#e4e2e2",
+                        "on-secondary-container": "#785a1a",
+                        "tertiary-fixed": "#e1e3e4",
+                        "surface-dim": "#dbd9d9",
+                        "outline": "#75777e",
+                        "secondary-container": "#fed488",
+                        "on-tertiary-fixed": "#191c1d",
+                        "on-secondary-fixed": "#261900",
+                        "inverse-on-surface": "#f2f0f0",
+                        "on-background": "#1b1c1c",
+                        "surface-container-high": "#eae8e7",
+                        "secondary": "#775a19",
+                        "secondary-fixed": "#ffdea5",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "tertiary": "#000000",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#39475f",
+                        "inverse-surface": "#303030",
+                        "primary-fixed": "#d6e3ff",
+                        "inverse-primary": "#b9c7e4",
+                        "tertiary-fixed-dim": "#c5c7c8",
+                        "primary-fixed-dim": "#b9c7e4",
+                        "outline-variant": "#c5c6cd",
+                        "tertiary-container": "#191c1d",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#828485",
+                        "primary-container": "#0d1c32",
+                        "on-error": "#ffffff",
+                        "surface-container": "#efeded",
+                        "on-surface": "#1b1c1c",
+                        "error": "#ba1a1a",
+                        "secondary-fixed-dim": "#e9c176",
+                        "primary": "#000000",
+                        "surface-bright": "#fbf9f8",
+                        "on-surface-variant": "#44474d",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#76849f",
+                        "on-primary-fixed": "#0d1c32",
+                        "background": "#fbf9f8",
+                        "surface-tint": "#515f78",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface": "#fbf9f8",
+                        "surface-container-low": "#f5f3f3",
+                        "surface-container-highest": "#e4e2e2",
+                        "on-tertiary-fixed-variant": "#454748"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "section-padding": "120px",
+                        "container-max": "1280px",
+                        "stack-md": "32px",
+                        "stack-sm": "16px",
+                        "stack-lg": "64px",
+                        "gutter": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Akony"],
+                        "body-md": ["Manrope"],
+                        "display-xl": ["Akony"],
+                        "body-lg": ["Manrope"],
+                        "label-caps": ["Manrope"],
+                        "headline-md": ["Akony"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.7", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "700"}],
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .growing-border {
+            position: relative;
+        }
+        .growing-border::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: #775a19;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .growing-border:hover::after {
+            width: 100%;
+        }
+        .ken-burns {
+            overflow: hidden;
+        }
+        .ken-burns img {
+            transition: transform 10s ease;
+        }
+        .ken-burns:hover img {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-[0_40px_40px_-15px_rgba(10,25,47,0.04)] h-24">
+<div class="flex justify-between items-center h-full px-12 max-w-[1440px] mx-auto">
+<div class="text-2xl font-black tracking-tighter text-slate-900 uppercase">
+                Elite Construct
+            </div>
+<div class="hidden md:flex items-center gap-10">
+<a class="font-['Manrope'] font-bold tracking-widest uppercase text-xs text-slate-500 hover:text-amber-500 transition-colors" href="#">Portfolio</a>
+<a class="font-['Manrope'] font-bold tracking-widest uppercase text-xs text-slate-500 hover:text-amber-500 transition-colors" href="#">Services</a>
+<a class="font-['Manrope'] font-bold tracking-widest uppercase text-xs text-amber-500 border-b border-amber-500 pb-1" href="#">Company History</a>
+</div>
+<button class="bg-primary text-on-primary px-8 py-4 font-label-caps uppercase tracking-widest scale-95 active:scale-100 transition-transform growing-border">
+                Enquire Now
+            </button>
+</div>
+</nav>
+<main class="mt-24">
+<!-- Hero: Founder & Team Section -->
+<section class="py-section-padding px-12 max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<div class="lg:col-span-5 space-y-stack-md">
+<span class="font-label-caps text-secondary uppercase tracking-[0.3em]">Established 2012</span>
+<h1 class="font-display-xl text-display-xl text-primary leading-tight">Crafting Coimbatore’s <br/>New Skyline.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
+                    Elite Construct began with a single vision: to bring world-class architectural precision to the heart of Coimbatore. Led by our founding team, we combine local heritage with uncompromising modern engineering.
+                </p>
+<div class="pt-unit-8">
+<div class="flex items-center gap-4 text-primary font-bold">
+<div class="w-12 h-[1px] bg-secondary"></div>
+<span class="font-label-caps">The Elite Standard</span>
+</div>
+</div>
+</div>
+<div class="lg:col-span-7 relative h-[600px] ken-burns">
+<img alt="Founder standing on a construction site" class="w-full h-full object-cover shadow-2xl" data-alt="Distinguished architect in professional attire standing on a modern construction site in Coimbatore, warm sunset lighting hitting concrete structures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8BchBoZAS6eHvxVQ97zpNAkJYONBDTxAWHmXrCY_fuj53pbsX6nDxKLSlEgggq23Qtec5roHdrRgZuv8mREiYbQS_fsZkhGdpPZ9HksqAVIh0_ZxdYjB4lLMp5-PXHKFlwxT4w0J7GGsoAjFZ-WaPeXFREjkImI4sO0maB0h0FWYclnjOiQvvGrSCAmBsLbmbNwtk8V0-3RuF7iMLZA1Wg3XfZz-bPXR6hzMGPxZQ2JcsvjemFs-2cYriLTD2NfFdfHKBzPKI0qQ"/>
+<div class="absolute -bottom-8 -left-8 bg-white p-10 shadow-xl hidden md:block">
+<p class="font-headline-md text-headline-md text-primary mb-2">12+</p>
+<p class="font-label-caps text-on-surface-variant uppercase">Years of Excellence</p>
+</div>
+</div>
+</section>
+<!-- Philosophy Section -->
+<section class="bg-surface-container-low py-section-padding">
+<div class="px-12 max-w-[1440px] mx-auto">
+<div class="text-center mb-24 space-y-4">
+<h2 class="font-headline-lg text-headline-lg text-primary">The Core Principles</h2>
+<div class="w-20 h-1 bg-secondary mx-auto"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+<!-- Philosophy Item 1 -->
+<div class="flex flex-col items-start space-y-6 group">
+<div class="w-20 h-20 bg-primary flex items-center justify-center transition-all duration-500 group-hover:bg-secondary">
+<span class="material-symbols-outlined text-white text-4xl" data-icon="supervisor_account">supervisor_account</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary">Direct Founder Oversight</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                            Every blueprint and every concrete pour at Elite is personally reviewed by our founders. We believe that true quality cannot be outsourced; it must be overseen by the hands that carry the reputation.
+                        </p>
+</div>
+<!-- Philosophy Item 2 -->
+<div class="flex flex-col items-start space-y-6 group">
+<div class="w-20 h-20 bg-primary flex items-center justify-center transition-all duration-500 group-hover:bg-secondary">
+<span class="material-symbols-outlined text-white text-4xl" data-icon="location_city">location_city</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary">100% Local Workforce</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                            Our strength lies in the skilled artisans and engineers of Coimbatore. By maintaining an entirely local team, we ensure cultural resonance in our designs and unwavering commitment to the community we build in.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Timeline: The Elite Journey -->
+<section class="py-section-padding px-12 max-w-[1440px] mx-auto">
+<div class="mb-24">
+<span class="font-label-caps text-secondary uppercase tracking-[0.3em]">Legacy</span>
+<h2 class="font-headline-lg text-headline-lg text-primary mt-4">The Elite Journey</h2>
+</div>
+<div class="relative">
+<!-- Vertical Line -->
+<div class="absolute left-0 md:left-1/2 top-0 bottom-0 w-[1px] bg-slate-200 -translate-x-1/2 hidden md:block"></div>
+<div class="space-y-stack-lg relative">
+<!-- 2012 -->
+<div class="flex flex-col md:flex-row items-center justify-between group">
+<div class="md:w-[45%] mb-8 md:mb-0">
+<div class="bg-white p-12 border border-slate-100 hover:border-secondary transition-colors shadow-[0_40px_40px_-15px_rgba(10,25,47,0.04)]">
+<span class="font-display-xl text-primary opacity-10 block mb-4">2012</span>
+<h4 class="font-headline-md text-headline-md text-primary mb-4">Foundation</h4>
+<p class="font-body-md text-on-surface-variant">Elite Construct was incorporated with a focus on high-end private villas in RS Puram. The vision was clear: build better, build bolder.</p>
+</div>
+</div>
+<div class="absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-secondary rounded-full hidden md:block border-4 border-white"></div>
+<div class="md:w-[45%] h-64 ken-burns">
+<img alt="Early project site" class="w-full h-full object-cover" data-alt="Black and white architectural photograph of a luxury villa foundation being laid, artistic shadows and sharp angles." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtCd2-uC_zLnoXPMNRu78Phijl9ymR4MxtH8Y2eeoT5ZNjMo9G5mMMTBne7eXt7c5buLxGgFO9nAMO3-NdHFYN6A8yo5HnhNhGO5ycAVjHwDbIoJuVa3OFSZSS56nVSuuSazsSNNMHDAt_O5qld1oizp1-A1if0w-BhfvrCy9zZnr1wfNPMI01uj06nGKyOpearkMrdexlOo8qMGRVP3hVRpnc_CRh6PdkwTpRrx7VkM4GiAkLN3HV2JzAGtZlQXlmrwZzgPMCakA"/>
+</div>
+</div>
+<!-- 2018 -->
+<div class="flex flex-col md:flex-row-reverse items-center justify-between group">
+<div class="md:w-[45%] mb-8 md:mb-0">
+<div class="bg-white p-12 border border-slate-100 hover:border-secondary transition-colors shadow-[0_40px_40px_-15px_rgba(10,25,47,0.04)]">
+<span class="font-display-xl text-primary opacity-10 block mb-4">2018</span>
+<h4 class="font-headline-md text-headline-md text-primary mb-4">Vertical Expansion</h4>
+<p class="font-body-md text-on-surface-variant">We marked our entry into corporate skyscrapers, delivering Coimbatore's most efficient sustainable commercial hubs.</p>
+</div>
+</div>
+<div class="absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-secondary rounded-full hidden md:block border-4 border-white"></div>
+<div class="md:w-[45%] h-64 ken-burns">
+<img alt="Corporate building project" class="w-full h-full object-cover" data-alt="Modern glass and steel skyscraper reflecting the Coimbatore morning sky, sleek professional architectural photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCStZefayNMroirrxu9-DwnOuAiU18yrOHqQaroVpix0UIaF8BEof5dQQjtdlL4K1kFlMVQQ_jhuPu1iZBwSuRb6xKOLDrr8n9bNKNsRbEYnx-T7HhJKt_SgsPtp92Ts9IJeZy2NbvJPDLWNUp7cOtoQ7VCLTj-NSH3ex1Cm1e-uSa5wvnStd7lX25KGhhsu12CX61f28b5ub65NfMLqTpXSUvsGcnWjD0YcWevj2cJ6l9TeHLYhH9p0I1b6SNfdrQEC7O6KpjqKhI"/>
+</div>
+</div>
+<!-- 2024 -->
+<div class="flex flex-col md:flex-row items-center justify-between group">
+<div class="md:w-[45%] mb-8 md:mb-0">
+<div class="bg-white p-12 border border-slate-100 hover:border-secondary transition-colors shadow-[0_40px_40px_-15px_rgba(10,25,47,0.04)]">
+<span class="font-display-xl text-primary opacity-10 block mb-4">Present</span>
+<h4 class="font-headline-md text-headline-md text-primary mb-4">Modern Legacy</h4>
+<p class="font-body-md text-on-surface-variant">Today, Elite is synonymous with luxury. We continue to redefine the landscape with 'The Sovereign', our most ambitious project to date.</p>
+</div>
+</div>
+<div class="absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-secondary rounded-full hidden md:block border-4 border-white"></div>
+<div class="md:w-[45%] h-64 ken-burns">
+<img alt="Modern luxury property" class="w-full h-full object-cover" data-alt="Stunning ultra-modern luxury residence with infinity pool at dusk, warm interior lights, architectural masterpiece in Coimbatore." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIJ8PDIMQSIf_qRNEckDk_czn_H4s_sRLBiXvDmr5He6yrp2pRmoHyElycTQ3mpU_js2VKGygc0kl4VR4PoGaLsTB57BMyVi4k9LITqgQUdol4bVHLgnM43oCnvVsGNb7KyPpDFEAmhkeYkJaeNXigLIJSyfs47v-xpimjlQkTXE9U-CYsouGn78og6UoRd4LEu0FNhUiU0SmbTLtwpMlyPQ2tcK5wtsR8r4sdHhhrhnN3hTYbEAgfxe8m2xeyoQJdtTyTWCDsKXo"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-section-padding bg-primary text-on-primary">
+<div class="px-12 max-w-[1440px] mx-auto text-center space-y-8">
+<h2 class="font-headline-lg text-headline-lg max-w-3xl mx-auto text-white">Join our journey of building timeless landmarks.</h2>
+<button class="border-2 border-secondary text-secondary px-12 py-5 font-label-caps uppercase tracking-widest hover:bg-secondary hover:text-primary transition-all duration-300">
+                    Partner With Us
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-900 w-full py-20 border-t border-amber-500/20">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 px-12 max-w-[1440px] mx-auto">
+<div>
+<div class="text-xl font-bold text-white uppercase tracking-widest mb-8">
+                    Elite Construct
+                </div>
+<p class="text-slate-400 font-['Manrope'] text-sm leading-relaxed">
+                    Building the future of Coimbatore with architectural integrity and local craftsmanship.
+                </p>
+</div>
+<div class="flex flex-col space-y-4">
+<h4 class="text-white font-bold uppercase tracking-widest text-xs mb-4">Quick Links</h4>
+<a class="text-slate-400 hover:text-white hover:translate-x-1 transition-transform duration-300 text-sm font-['Manrope']" href="#">Portfolio</a>
+<a class="text-slate-400 hover:text-white hover:translate-x-1 transition-transform duration-300 text-sm font-['Manrope']" href="#">Services</a>
+<a class="text-amber-500 text-sm font-['Manrope']" href="#">History</a>
+<a class="text-slate-400 hover:text-white hover:translate-x-1 transition-transform duration-300 text-sm font-['Manrope']" href="#">Contact</a>
+</div>
+<div class="flex flex-col space-y-4">
+<h4 class="text-white font-bold uppercase tracking-widest text-xs mb-4">Connect</h4>
+<p class="text-slate-400 text-sm font-['Manrope']">74, Race Course Road, Coimbatore</p>
+<p class="text-slate-400 text-sm font-['Manrope']">+91 422 230 4000</p>
+<div class="flex gap-4 pt-4">
+<span class="material-symbols-outlined text-amber-500 cursor-pointer" data-icon="share">share</span>
+<span class="material-symbols-outlined text-amber-500 cursor-pointer" data-icon="mail">mail</span>
+</div>
+</div>
+</div>
+<div class="px-12 max-w-[1440px] mx-auto mt-16 pt-8 border-t border-slate-800">
+<p class="text-slate-500 font-['Manrope'] text-xs uppercase tracking-widest text-center">
+                © 2024 Elite Construct Coimbatore. All rights reserved.
+            </p>
+</div>
+</footer>
+</body></html>

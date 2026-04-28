@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-on-surface": "#f2f0f0",
+                    "outline-variant": "#c5c6cd",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed": "#191c1d",
+                    "on-surface": "#1b1c1c",
+                    "error": "#ba1a1a",
+                    "inverse-primary": "#b9c7e4",
+                    "primary-fixed": "#d6e3ff",
+                    "secondary-fixed-dim": "#e9c176",
+                    "on-secondary-container": "#785a1a",
+                    "surface-container-low": "#f5f3f3",
+                    "on-secondary-fixed": "#261900",
+                    "inverse-surface": "#303030",
+                    "surface-container-highest": "#e4e2e2",
+                    "tertiary-fixed": "#e1e3e4",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#0d1c32",
+                    "on-primary-container": "#76849f",
+                    "secondary-fixed": "#ffdea5",
+                    "surface": "#fbf9f8",
+                    "surface-dim": "#dbd9d9",
+                    "surface-tint": "#515f78",
+                    "primary-container": "#0d1c32",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#fed488",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-container": "#828485",
+                    "error-container": "#ffdad6",
+                    "on-surface-variant": "#44474d",
+                    "surface-container-high": "#eae8e7",
+                    "on-primary-fixed-variant": "#39475f",
+                    "tertiary-container": "#191c1d",
+                    "on-secondary-fixed-variant": "#5d4201",
+                    "surface-bright": "#fbf9f8",
+                    "primary": "#000000",
+                    "tertiary-fixed-dim": "#c5c7c8",
+                    "on-background": "#1b1c1c",
+                    "surface-variant": "#e4e2e2",
+                    "primary-fixed-dim": "#b9c7e4",
+                    "background": "#fbf9f8",
+                    "secondary": "#775a19",
+                    "surface-container": "#efeded",
+                    "on-primary": "#ffffff",
+                    "outline": "#75777e",
+                    "tertiary": "#000000",
+                    "on-tertiary-fixed-variant": "#454748"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "stack-sm": "16px",
+                    "stack-lg": "64px",
+                    "section-padding": "120px",
+                    "stack-md": "32px",
+                    "unit": "8px",
+                    "gutter": "32px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "body-md": ["Manrope"],
+                    "label-caps": ["Manrope"],
+                    "body-lg": ["Manrope"],
+                    "headline-lg": ["Akony", "sans-serif"],
+                    "headline-md": ["Akony", "sans-serif"],
+                    "display-xl": ["Akony", "sans-serif"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.7", "fontWeight": "400"}],
+                    "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "400"}],
+                    "display-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        @font-face {
+            font-family: 'Akony';
+            src: url('https://fonts.cdnfonts.com/s/73916/Akony-Regular.woff') format('woff');
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .portfolio-card:hover .card-overlay {
+            transform: translateY(0);
+        }
+        .card-overlay {
+            transform: translateY(100%);
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .architectural-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 32px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 border-b border-[#D4AF37]/20 bg-white/90 backdrop-blur-md shadow-[0_40px_40px_rgba(10,25,47,0.04)]">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-8 h-24">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#0A192F] text-3xl" data-icon="architecture">architecture</span>
+<span class="text-2xl font-black tracking-tighter text-[#0A192F] uppercase">ELITE CONSTRUCT</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="font-label-caps text-body-md text-[#0A192F] dark:text-slate-300 hover:text-[#D4AF37] transition-colors" href="#">Portfolio</a>
+<a class="font-label-caps text-body-md text-[#D4AF37] border-b-2 border-[#D4AF37] pb-1" href="#">Services</a>
+<a class="font-label-caps text-body-md text-[#0A192F] dark:text-slate-300 hover:text-[#D4AF37] transition-colors" href="#">Company History</a>
+<a class="font-label-caps text-body-md text-[#0A192F] dark:text-slate-300 hover:text-[#D4AF37] transition-colors" href="#">Contact</a>
+</nav>
+<button class="bg-[#0A192F] text-white px-8 py-3 font-label-caps hover:bg-[#D4AF37] transition-all duration-500 scale-100 active:scale-95">
+                Enquire Now
+            </button>
+</div>
+</header>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="relative h-[530px] flex items-center justify-center overflow-hidden bg-[#0A192F]">
+<div class="absolute inset-0 opacity-40">
+<img alt="Architecture Hero" class="w-full h-full object-cover" data-alt="Modern glass skyscraper reflecting the blue sky at sunrise with dramatic architectural angles and clean minimalist aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_61sO4HQKz3HrbsxcgVncACwTSSBLNAR-KULEcmO-2FO_kqTyCmSV_pdBalqueKrGdFp1SMRdmPftU1U7hzHE09QZIHBcFRO6RtQW_bmt3gU2tHnD6SN7YED9Sz543I1YxAV0gXA035BYHK_aELDyR0IOMx5mhilJhGk8O-i8TYfeCsaHj_cEMGIH_-jjXjjhQLzLY29taqIJp565OchaDblOuU0mtlMmWmYNki8LjOzD14goCvEFa2evSjl3NMy3fQHLssFLMCI"/>
+</div>
+<div class="relative z-10 text-center px-8">
+<p class="text-[#D4AF37] font-label-caps mb-4">OUR CAPABILITIES</p>
+<h1 class="text-white font-headline-lg text-display-xl tracking-tight max-w-4xl mx-auto">From Foundation to Keys.</h1>
+<p class="text-slate-300 font-body-lg mt-6 max-w-2xl mx-auto">We don't just build structures; we craft environments of enduring confidence and prestige for Coimbatore's finest estates.</p>
+</div>
+</section>
+<!-- Core Services - Asymmetric Layout -->
+<section class="max-w-7xl mx-auto px-8 py-[120px]">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-[32px] items-center">
+<!-- Service 1: Residential -->
+<div class="md:col-span-7 portfolio-card relative aspect-video overflow-hidden shadow-[0_40px_40px_rgba(10,25,47,0.04)] bg-white">
+<img alt="Luxury Villa" class="w-full h-full object-cover" data-alt="Ultra-modern luxury villa exterior with warm interior lighting and large glass windows surrounded by minimalist landscaping at twilight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1V6_uz2H3SbkQJdSHvOK_ECRS2b0jXRjE36dUAQ35gqojAVRf5YvS_Jq1jYgEwGD4i0MTaG2Hd-MdQfhID7Pbwx--rTgyu8UY1Gp3mL0-8sgMDXhfPdyYvoFK9cFeyrj-mPWUDh2o3gvne6aPYAGgIBB9ppilH-eOlMwQ0iH7AZAFbES2X6LniboVuw32LPyyS8ZHIofg1xhKcP2ULpNyoG0TlKyaxvkjZAjtwFkYQE9I5ciCTXzo6-o6S1lowDF1fTcQM-p7hQY"/>
+<div class="card-overlay absolute inset-0 bg-white/95 p-12 flex flex-col justify-center">
+<span class="text-[#D4AF37] font-label-caps mb-4">RESIDENTIAL</span>
+<h3 class="font-headline-md text-[#0A192F] mb-4">Luxury Private Estates</h3>
+<p class="text-on-surface-variant font-body-md mb-8">We manage every detail of your home’s creation. From the first shovel in the ground to the moment you turn the key, we ensure absolute perfection in every finish.</p>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-[#D4AF37]" data-icon="done">done</span> Custom Architecture Integration</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-[#D4AF37]" data-icon="done">done</span> Bespoke Interior Craftsmanship</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-[#D4AF37]" data-icon="done">done</span> Landscape Harmonization</li>
+</ul>
+</div>
+</div>
+<div class="md:col-span-5 p-8">
+<h2 class="font-headline-md text-[#0A192F] leading-tight">Homes built for generations.</h2>
+<p class="text-on-surface-variant mt-4 text-body-lg">Every villa we build is a testament to permanence. We use materials that age with grace and structural techniques that exceed international standards.</p>
+</div>
+<!-- Service 2: Corporate -->
+<div class="md:col-span-5 md:order-2 portfolio-card relative aspect-video overflow-hidden shadow-[0_40px_40px_rgba(10,25,47,0.04)] bg-white">
+<img alt="Corporate Office" class="w-full h-full object-cover" data-alt="Sleek corporate office interior with glass partitions, dark wood accents and polished concrete floors in natural sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPOuXsWO9BHKjNzZUV054KqKUflGHz-x4ziDLSmezENMZ_U9lxL1btZq3VolIAhHUoNZo2yZlv9MreRLa4fONQ2wtoSru8QrkxQ9ggZooE-4YJ1Y1v4BYxjYYFugMLYMS2cm-YG2BsFcBpX0rQnnCfinmhK1sh_MosIMEGmIisnswAALkirvfTfgshiTmIjqnWvCpRluh-L8te0zfXuqtEq3HcLK_id7IsQ-73KjQGzR2Oz35433jqy6JjvJBwAvIY_yU7O317k4M"/>
+<div class="card-overlay absolute inset-0 bg-white/95 p-12 flex flex-col justify-center">
+<span class="text-[#D4AF37] font-label-caps mb-4">CORPORATE</span>
+<h3 class="font-headline-md text-[#0A192F] mb-4">Elite Business Spaces</h3>
+<p class="text-on-surface-variant font-body-md mb-8">Building work environments that command respect. We deliver functional, inspiring, and technologically advanced commercial headquarters on schedule.</p>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-[#D4AF37]" data-icon="done">done</span> Grade-A Office Construction</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-[#D4AF37]" data-icon="done">done</span> Sustainable Building Systems</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-[#D4AF37]" data-icon="done">done</span> Smart Infrastructure Ready</li>
+</ul>
+</div>
+</div>
+<div class="md:col-span-7 md:order-1 p-8 text-right flex flex-col items-end">
+<h2 class="font-headline-md text-[#0A192F] leading-tight">Precision for progress.</h2>
+<p class="text-on-surface-variant mt-4 text-body-lg max-w-lg">In business, time is the ultimate currency. Our commercial division specializes in rapid delivery without compromising the 'Elite' standard of finish.</p>
+</div>
+<!-- Service 3: Renovations -->
+<div class="md:col-span-12 mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+<div class="bg-[#0A192F] p-16 flex flex-col justify-center">
+<span class="text-[#D4AF37] font-label-caps mb-6">RESTORATION</span>
+<h3 class="text-white font-headline-lg mb-6">Renewing Heritage.</h3>
+<p class="text-slate-400 font-body-lg mb-8 leading-relaxed">Breathing new life into existing structures with contemporary standards of comfort and luxury. We specialize in transforming aging properties into modern masterpieces.</p>
+<div class="flex gap-12">
+<div>
+<p class="text-[#D4AF37] text-4xl font-headline-md">15+</p>
+<p class="text-white font-label-caps text-[10px]">YEARS OF EXPERTISE</p>
+</div>
+<div>
+<p class="text-[#D4AF37] text-4xl font-headline-md">200+</p>
+<p class="text-white font-label-caps text-[10px]">PROJECTS COMPLETED</p>
+</div>
+</div>
+</div>
+<div class="portfolio-card relative overflow-hidden h-[500px]">
+<img alt="Interior Renovation" class="w-full h-full object-cover" data-alt="Breathtaking renovation of a historic building with original stone walls blended with modern glass and gold metal details" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0y_hNCDvKnY4NLLMVQ6c3_C6Zd9OtH_gI91qOjLYCjucEMyTuBAK-c3zPwHsUfdJPKrrsVUReGBF1OEsML-O8H77SgM4SCdy7K5ggoer-J0LSW6JOVcV0lmIEgCv0vcoAJpdwFV3hltfWvvEvr0Pw2kK4BqzrbGj6Pa76zJDT45XytoMu3GaGK0O_yeWoVR_TaFzxsw28ahUX-36Zu2wqoJWFTOIGVvFTziJFHUVPdJiGnROc2nmUOCjZz-ST2xnuZypqR_cOuLk"/>
+<div class="absolute bottom-0 left-0 bg-white p-8 max-w-sm m-8">
+<p class="text-[#0A192F] font-bold">The Heritage Project</p>
+<p class="text-on-surface-variant text-sm italic">Coimbatore, 2023</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Process Section -->
+<section class="bg-surface-container-low py-[120px]">
+<div class="max-w-7xl mx-auto px-8">
+<div class="text-center mb-20">
+<span class="text-[#D4AF37] font-label-caps">OUR METHOD</span>
+<h2 class="font-headline-lg text-[#0A192F] mt-2">How We Deliver Excellence</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="bg-white p-10 border border-[#D4AF37]/10 hover:border-[#D4AF37] transition-all duration-500">
+<span class="text-display-xl text-[#D4AF37]/20 font-black">01</span>
+<h4 class="font-headline-md text-[#0A192F] -mt-8 mb-4">Vision</h4>
+<p class="text-on-surface-variant">We sit down to understand your goals, lifestyle, and aesthetic preferences without the jargon.</p>
+</div>
+<div class="bg-white p-10 border border-[#D4AF37]/10 hover:border-[#D4AF37] transition-all duration-500">
+<span class="text-display-xl text-[#D4AF37]/20 font-black">02</span>
+<h4 class="font-headline-md text-[#0A192F] -mt-8 mb-4">Blueprints</h4>
+<p class="text-on-surface-variant">Our architects translate your vision into precise technical plans ready for uncompromising execution.</p>
+</div>
+<div class="bg-white p-10 border border-[#D4AF37]/10 hover:border-[#D4AF37] transition-all duration-500">
+<span class="text-display-xl text-[#D4AF37]/20 font-black">03</span>
+<h4 class="font-headline-md text-[#0A192F] -mt-8 mb-4">Execution</h4>
+<p class="text-on-surface-variant">Master craftsmen and site supervisors manage the build with military-grade precision and daily updates.</p>
+</div>
+<div class="bg-white p-10 border border-[#D4AF37]/10 hover:border-[#D4AF37] transition-all duration-500">
+<span class="text-display-xl text-[#D4AF37]/20 font-black">04</span>
+<h4 class="font-headline-md text-[#0A192F] -mt-8 mb-4">Handoff</h4>
+<p class="text-on-surface-variant">We hand over the keys to your new reality, ensuring every switch and surface is flawless.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-[120px] text-center max-w-4xl mx-auto px-8">
+<h2 class="font-headline-lg text-[#0A192F] mb-6">Ready to start your legacy?</h2>
+<p class="text-body-lg text-on-surface-variant mb-12">Connect with our principal consultant today for a private viewing of our completed portfolio and a preliminary discussion of your project.</p>
+<div class="flex flex-col md:flex-row gap-6 justify-center">
+<button class="bg-[#0A192F] text-white px-12 py-5 font-label-caps hover:bg-[#D4AF37] transition-all duration-500">
+                    Schedule Consultation
+                </button>
+<button class="border border-[#0A192F] text-[#0A192F] px-12 py-5 font-label-caps hover:bg-[#0A192F] hover:text-white transition-all duration-500">
+                    View Portfolio
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#0A192F] dark:bg-black w-full py-20 border-t border-[#D4AF37]/10">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 max-w-7xl mx-auto px-8">
+<div class="md:col-span-4">
+<div class="text-xl font-bold text-white tracking-widest mb-6">ELITE CONSTRUCT</div>
+<p class="text-slate-400 font-['Manrope'] text-[12px] leading-relaxed max-w-xs">
+                    Coimbatore's premier architectural firm specializing in uncompromising luxury and corporate excellence.
+                </p>
+</div>
+<div class="md:col-span-2">
+<h5 class="text-[#D4AF37] font-label-caps mb-6">NAVIGATION</h5>
+<ul class="space-y-4">
+<li><a class="text-slate-400 hover:text-[#D4AF37] font-['Manrope'] text-[12px] transition-transform duration-300 inline-block hover:translate-x-1" href="#">Portfolio</a></li>
+<li><a class="text-white font-bold font-['Manrope'] text-[12px] transition-transform duration-300 inline-block hover:translate-x-1" href="#">Services</a></li>
+<li><a class="text-slate-400 hover:text-[#D4AF37] font-['Manrope'] text-[12px] transition-transform duration-300 inline-block hover:translate-x-1" href="#">Company History</a></li>
+</ul>
+</div>
+<div class="md:col-span-2">
+<h5 class="text-[#D4AF37] font-label-caps mb-6">LEGAL</h5>
+<ul class="space-y-4">
+<li><a class="text-slate-400 hover:text-[#D4AF37] font-['Manrope'] text-[12px] transition-transform duration-300 inline-block hover:translate-x-1" href="#">Privacy Policy</a></li>
+<li><a class="text-slate-400 hover:text-[#D4AF37] font-['Manrope'] text-[12px] transition-transform duration-300 inline-block hover:translate-x-1" href="#">Contact</a></li>
+</ul>
+</div>
+<div class="md:col-span-4">
+<h5 class="text-[#D4AF37] font-label-caps mb-6">OFFICE</h5>
+<p class="text-slate-400 font-['Manrope'] text-[12px] leading-relaxed">
+                    12th Floor, Corporate Heights,<br/>
+                    Avinashi Road, Coimbatore 641018<br/><br/>
+                    +91 422 450 0000<br/>
+                    contact@eliteconstruct.in
+                </p>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 mt-20 pt-8 border-t border-[#D4AF37]/5 text-center">
+<p class="text-slate-400 font-['Manrope'] text-[12px] leading-relaxed">
+                © 2024 Elite Construction Coimbatore. Built with Architectural Confidence.
+            </p>
+</div>
+</footer>
+</body></html>
