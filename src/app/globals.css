@@ -52,12 +52,12 @@ body {
 
 /* Reveal classes */
 .reveal {
-  clip-path: inset(0 0 100% 0);
-  transform: translateY(24px);
-  transition: clip-path 0.8s var(--ease-arch), transform 0.8s var(--ease-arch);
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
 }
 .reveal.visible {
-  clip-path: inset(0 0 0% 0);
+  opacity: 1;
   transform: translateY(0);
 }
 
