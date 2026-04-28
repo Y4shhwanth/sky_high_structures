@@ -9,26 +9,26 @@ const statsData = [
   { value: 50, suffix: "+", label: "Team Members" },
 ];
 
-function easeOutExpo(t: number): number {
-  return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
-}
+const easeOutExpo = (t: number): number => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t));
 
 export default function StatsSection() {
   const [isVisible, setIsVisible] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLElement>(null);
+  const valueRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  const isVisibleRef = useRef(false);
   const hasAnimated = useRef(false);
 
   useEffect(() => {
-    // Wait for heroHoldComplete event to unlock visibility
-    const onHeroHold = () => {
-      setIsVisible(true);
-    };
+    isVisibleRef.current = isVisible;
+  }, [isVisible]);
+
+  useEffect(() => {
+    const onHeroHold = () => setIsVisible(true);
     window.addEventListener("heroHoldComplete", onHeroHold);
 
-    // Intersection observer for count up animation
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting && isVisible && !hasAnimated.current) {
+        if (entries[0].isIntersecting && isVisibleRef.current && !hasAnimated.current) {
           hasAnimated.current = true;
           startCountUp();
         }
@@ -36,37 +36,28 @@ export default function StatsSection() {
       { threshold: 0.2 }
     );
 
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
+    if (containerRef.current) observer.observe(containerRef.current);
 
     return () => {
       window.removeEventListener("heroHoldComplete", onHeroHold);
       observer.disconnect();
     };
-  }, [isVisible]);
+  }, []);
 
   const startCountUp = () => {
     const duration = 2000;
-    const startObj = performance.now();
+    const start = performance.now();
 
     const animate = (time: number) => {
-      let progress = (time - startObj) / duration;
-      if (progress > 1) progress = 1;
-
-      const easeProgress = easeOutExpo(progress);
+      const progress = Math.min(1, (time - start) / duration);
+      const eased = easeOutExpo(progress);
 
       statsData.forEach((stat, i) => {
-        const span = document.getElementById(`stat-value-${i}`);
-        if (span) {
-          const currentVal = Math.floor(easeProgress * stat.value);
-          span.innerText = currentVal.toString();
-        }
+        const span = valueRefs.current[i];
+        if (span) span.textContent = String(Math.floor(eased * stat.value));
       });
 
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
+      if (progress < 1) requestAnimationFrame(animate);
     };
 
     requestAnimationFrame(animate);
@@ -75,11 +66,11 @@ export default function StatsSection() {
   return (
     <section
       ref={containerRef}
-      className={`bg-[var(--sky-dark)] py-[72px] px-[8vw] transition-opacity duration-800 ${
+      className={`bg-[var(--sky-dark)] py-16 md:py-[72px] px-6 md:px-[8vw] transition-opacity duration-[800ms] ${
         isVisible ? "opacity-100" : "opacity-0"
       }`}
     >
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-0">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6 md:gap-0">
         {statsData.map((stat, i) => (
           <div
             key={i}
@@ -89,14 +80,16 @@ export default function StatsSection() {
           >
             <div className="flex items-baseline text-[var(--sky-gold)] font-[var(--font-display)]">
               <span
-                id={`stat-value-${i}`}
-                className="font-medium text-[clamp(56px,7vw,88px)] leading-[0.9]"
+                ref={(el) => {
+                  valueRefs.current[i] = el;
+                }}
+                className="font-medium text-[clamp(44px,9vw,88px)] leading-[0.9]"
               >
                 0
               </span>
-              <span className="text-[40px] pl-1 font-medium">{stat.suffix}</span>
+              <span className="text-[28px] md:text-[40px] pl-1 font-medium">{stat.suffix}</span>
             </div>
-            <span className="font-[var(--font-body)] font-bold text-[11px] uppercase tracking-[0.15em] text-[var(--sky-muted)] mt-2 text-center md:text-left">
+            <span className="font-bold text-[10px] md:text-[11px] uppercase tracking-[0.15em] text-[var(--sky-muted)] mt-2 text-center md:text-left">
               {stat.label}
             </span>
           </div>

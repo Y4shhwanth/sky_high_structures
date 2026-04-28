@@ -13,9 +13,11 @@
   --sky-amber:     #D4956A;
   --sky-text:      #3D3A35;
   --sky-muted:     #8C857A;
+  --sky-whatsapp:  #25D366;
   --font-display:  'Cormorant Garamond', Georgia, serif;
   --font-body:     'Manrope', system-ui, sans-serif;
   --ease-arch:     cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @theme inline {
@@ -33,7 +35,7 @@ body {
   font-family: var(--font-body);
 }
 
-/* Global Animations */
+/* Marquee */
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
@@ -50,7 +52,7 @@ body {
   100% { transform: scale(1.06); }
 }
 
-/* Reveal classes */
+/* Reveal */
 .reveal {
   opacity: 0;
   transform: translateY(32px);
@@ -61,10 +63,50 @@ body {
   transform: translateY(0);
 }
 
+/* Hero */
+.hero-font {
+  font-family: var(--font-display);
+}
+@keyframes pulse-border {
+  0%   { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.7); }
+  100% { box-shadow: 0 0 0 15px rgba(197, 160, 89, 0); }
+}
+.pulse-glow {
+  animation: pulse-border 1.5s infinite alternate;
+}
+.eyebrow-anim {
+  transition: letter-spacing 1.2s cubic-bezier(0.2, 0, 0, 1);
+  letter-spacing: 0;
+}
+.headline-line {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0, 0.2, 1);
+}
+.gold-hr {
+  width: 0%;
+  transition: width 0.8s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+/* Chat */
+@keyframes msgSlideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.msg-animate {
+  animation: msgSlideUp 0.3s ease-out forwards;
+}
+
+/* Modal scroll containment */
+.modal-scroll {
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal {
-    clip-path: none;
     transform: none;
+    opacity: 1;
   }
   * {
     animation-duration: 0.001s !important;

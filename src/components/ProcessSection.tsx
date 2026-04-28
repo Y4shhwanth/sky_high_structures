@@ -47,11 +47,11 @@ export default function ProcessSection() {
   }, []);
 
   return (
-    <section id="process" className="bg-[var(--sky-dark)] py-[120px] px-[8vw]" ref={containerRef}>
+    <section id="process" className="bg-[var(--sky-dark)] py-20 md:py-[120px] px-6 md:px-[8vw]" ref={containerRef}>
       <h3 className="font-[var(--font-body)] font-bold text-[11px] uppercase tracking-[0.18em] text-[var(--sky-gold)] mb-4">
         The Process
       </h3>
-      <h2 className="font-[var(--font-display)] font-light italic text-[52px] text-white leading-tight mb-20">
+      <h2 className="font-[var(--font-display)] font-light italic text-[clamp(32px,6vw,52px)] text-white leading-tight mb-12 md:mb-20">
         From Blueprint to Handover
       </h2>
 

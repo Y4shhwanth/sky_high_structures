@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
 import "./globals.css";
 
@@ -20,6 +20,13 @@ export const metadata: Metadata = {
   description: "Premium home construction, villas & renovation in Coimbatore. 12+ years, 150+ homes built.",
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#0D1117",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -27,9 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${cormorantGaramond.variable} ${manrope.variable}`}>
-      <body className="antialiased">
-        {children}
-      </body>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }

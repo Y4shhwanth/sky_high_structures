@@ -41,7 +41,7 @@ export default function ServicesSection() {
   }, []);
 
   return (
-    <section id="services" className="bg-[var(--sky-bg)] py-[120px] px-[8vw]" ref={containerRef}>
+    <section id="services" className="bg-[var(--sky-bg)] py-20 md:py-[120px] px-6 md:px-[8vw]" ref={containerRef}>
       <h3 className="font-[var(--font-body)] font-bold text-[11px] uppercase tracking-[0.18em] text-[var(--sky-gold)] mb-4">
         What We Build
       </h3>

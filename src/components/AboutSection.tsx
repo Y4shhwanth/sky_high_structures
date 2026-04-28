@@ -10,8 +10,8 @@ const milestones = [
 
 export default function AboutSection() {
   return (
-    <section id="about" className="bg-[var(--sky-bg)] py-[120px] px-[8vw]">
-      <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-20 items-center">
+    <section id="about" className="bg-[var(--sky-bg)] py-20 md:py-[120px] px-6 md:px-[8vw]">
+      <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-12 lg:gap-20 items-center">
         
         {/* Left Column */}
         <Reveal>
@@ -55,22 +55,22 @@ export default function AboutSection() {
 
         {/* Right Column Images */}
         <Reveal delay={200}>
-          <div className="relative h-[500px] w-full mt-10 lg:mt-0">
-            <div className="absolute top-[-15px] right-[-15px] w-[100px] h-[100px] border-t border-r border-[var(--sky-gold)]" />
-            <div className="absolute top-0 left-0 w-[85%] h-[90%] md:h-full relative overflow-hidden">
-              <Image 
-                src="https://picsum.photos/seed/about1/800/1000" 
-                alt="Construction site" 
-                fill 
+          <div className="relative h-[380px] sm:h-[500px] w-full mt-6 lg:mt-0">
+            <div className="absolute top-[-15px] right-[-15px] w-[80px] h-[80px] md:w-[100px] md:h-[100px] border-t border-r border-[var(--sky-gold)]" />
+            <div className="absolute top-0 left-0 w-[85%] h-[90%] md:h-full overflow-hidden">
+              <Image
+                src="https://picsum.photos/seed/about1/800/1000"
+                alt="Construction site"
+                fill
                 className="object-cover"
-                sizes="(max-width: 768px) 100vw, 45vw"
+                sizes="(max-width: 768px) 85vw, 45vw"
               />
             </div>
-            <div className="absolute bottom-[-20px] md:bottom-[-30px] right-[0] md:right-[-20px] w-[55%] md:w-[52%] h-[40%] md:h-[52%] border-[6px] border-[var(--sky-bg)] z-10 overflow-hidden shadow-xl">
-              <Image 
-                src="https://picsum.photos/seed/about2/600/600" 
-                alt="Architectural details" 
-                fill 
+            <div className="absolute bottom-[-20px] md:bottom-[-30px] right-0 md:right-[-20px] w-[55%] md:w-[52%] h-[40%] md:h-[52%] border-[6px] border-[var(--sky-bg)] z-10 overflow-hidden shadow-xl">
+              <Image
+                src="https://picsum.photos/seed/about2/600/600"
+                alt="Architectural details"
+                fill
                 className="object-cover"
                 sizes="(max-width: 768px) 50vw, 25vw"
               />

@@ -12,9 +12,9 @@ export default function TestimonialsSection() {
   const loopedTestimonials = [...testimonials, ...testimonials];
 
   return (
-    <section className="bg-[var(--sky-surface)] py-[120px] overflow-hidden">
-      <div className="px-[8vw] mb-16 text-center">
-        <h2 className="font-[var(--font-display)] italic text-[clamp(40px,5vw,52px)] text-[var(--sky-text)] leading-tight max-w-3xl mx-auto">
+    <section className="bg-[var(--sky-surface)] py-20 md:py-[120px] overflow-hidden">
+      <div className="px-6 md:px-[8vw] mb-12 md:mb-16 text-center">
+        <h2 className="font-[var(--font-display)] italic text-[clamp(28px,6vw,52px)] text-[var(--sky-text)] leading-tight max-w-3xl mx-auto">
           Words From Those Who Live In Our Work
         </h2>
       </div>
@@ -22,7 +22,7 @@ export default function TestimonialsSection() {
       <div className="group flex overflow-hidden">
         <div className="flex w-max gap-7 animate-marquee pl-7">
           {loopedTestimonials.map((t, i) => (
-            <div key={i} className="bg-[var(--sky-bg)] w-[400px] flex-shrink-0 p-10 border-t-2 border-[var(--sky-gold)] relative">
+            <div key={i} className="bg-[var(--sky-bg)] w-[300px] sm:w-[360px] md:w-[400px] flex-shrink-0 p-7 sm:p-9 md:p-10 border-t-2 border-[var(--sky-gold)] relative">
               <div className="font-[var(--font-display)] font-medium text-[72px] text-[var(--sky-gold)] opacity-20 absolute top-3 right-5 leading-none select-none">
                 "
               </div>

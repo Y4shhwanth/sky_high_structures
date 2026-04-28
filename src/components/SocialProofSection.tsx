@@ -51,24 +51,10 @@ export default function SocialProofSection() {
   ];
 
   return (
-    <section className="bg-white pt-24 border-t border-black/5 flex flex-col font-[var(--font-body)]">
-      
-      {/* Inline styles for Marquee */}
-      <style>{`
-        @keyframes slideMarquee {
-          from { transform: translateX(0); }
-          to { transform: translateX(-100%); }
-        }
-        .animate-marquee {
-          animation: slideMarquee 25s linear infinite;
-        }
-        .marquee-container:hover .animate-marquee {
-          animation-play-state: paused;
-        }
-      `}</style>
+    <section className="bg-white pt-16 md:pt-24 border-t border-black/5 flex flex-col font-[var(--font-body)]">
 
       {/* TOP: Two-Column Layout (Insta + Google Reviews) */}
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 xl:px-20 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 mb-24">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 xl:px-20 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 lg:gap-24 mb-16 md:mb-24">
         
         {/* LEFT COLUMN: Instagram Feed */}
         <Reveal>
@@ -180,43 +166,24 @@ export default function SocialProofSection() {
 
       </div>
 
-      {/* BOTTOM: Trust Badges Row (Marquee) */}
-      <div className="w-full overflow-hidden bg-[var(--sky-dark)] py-8 border-y-2 border-[var(--sky-gold)]/20 relative marquee-container">
-        {/* Soft Fader overlay for infinite illusion */}
-        <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-[var(--sky-dark)] to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-[var(--sky-dark)] to-transparent z-10 pointer-events-none" />
+      {/* BOTTOM: Trust Badges Row (Marquee) — single track, doubled content for seamless loop */}
+      <div className="w-full overflow-hidden bg-[var(--sky-dark)] py-6 md:py-8 border-y-2 border-[var(--sky-gold)]/20 relative">
+        <div className="absolute left-0 top-0 bottom-0 w-12 md:w-32 bg-gradient-to-r from-[var(--sky-dark)] to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-12 md:w-32 bg-gradient-to-l from-[var(--sky-dark)] to-transparent z-10 pointer-events-none" />
 
-        <div className="flex w-max relative">
-          
-          <div className="flex animate-marquee shrink-0">
-            {[...basicBadges, ...basicBadges].map((item, i) => (
-              <div 
-                key={i} 
-                className="flex items-center gap-3.5 bg-[#112445] border border-[var(--sky-gold)]/30 rounded-full px-6 py-3 mr-6 md:mr-10 hover:border-[var(--sky-gold)] hover:bg-[#162744] transition-colors cursor-default"
-              >
-                <item.icon className="w-5 h-5 text-[var(--sky-gold)] shrink-0" strokeWidth={2} />
-                <span className="text-white font-[var(--font-body)] text-[14px] font-medium tracking-widest uppercase">
-                  {item.text}
-                </span>
-              </div>
-            ))}
-          </div>
-
-          {/* Exact duplicate block for seamless scroll hook */}
-          <div className="flex animate-marquee shrink-0" aria-hidden="true">
-            {[...basicBadges, ...basicBadges].map((item, i) => (
-              <div 
-                key={`dup-${i}`} 
-                className="flex items-center gap-3.5 bg-[#112445] border border-[var(--sky-gold)]/30 rounded-full px-6 py-3 mr-6 md:mr-10 hover:border-[var(--sky-gold)] hover:bg-[#162744] transition-colors cursor-default"
-              >
-                <item.icon className="w-5 h-5 text-[var(--sky-gold)] shrink-0" strokeWidth={2} />
-                <span className="text-white font-[var(--font-body)] text-[14px] font-medium tracking-widest uppercase">
-                  {item.text}
-                </span>
-              </div>
-            ))}
-          </div>
-
+        <div className="flex w-max animate-marquee">
+          {[...basicBadges, ...basicBadges].map((item, i) => (
+            <div
+              key={i}
+              className="flex items-center gap-3 sm:gap-3.5 bg-[#112445] border border-[var(--sky-gold)]/30 rounded-full px-4 sm:px-6 py-2.5 sm:py-3 mr-5 sm:mr-6 md:mr-10 hover:border-[var(--sky-gold)] hover:bg-[#162744] transition-colors cursor-default"
+              aria-hidden={i >= basicBadges.length}
+            >
+              <item.icon className="w-4 h-4 sm:w-5 sm:h-5 text-[var(--sky-gold)] shrink-0" strokeWidth={2} />
+              <span className="text-white text-[12px] sm:text-[14px] font-medium tracking-widest uppercase whitespace-nowrap">
+                {item.text}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
 

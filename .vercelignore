@@ -1,0 +1,9 @@
+stitch_website_ui_redesign/
+ezgif-*.zip
+404.html
+_redirects
+netlify.toml
+sw.js
+manifest.json
+generate_icons.js
+.next/

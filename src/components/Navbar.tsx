@@ -33,10 +33,10 @@ export default function Navbar() {
     <>
       <nav
         style={{ transition: "all 500ms var(--ease-arch)" }}
-        className={`fixed top-0 w-full z-[1000] flex justify-between items-center px-[8vw] ${
+        className={`fixed top-0 w-full z-[1000] flex justify-between items-center px-6 md:px-[8vw] ${
           scrolled
-            ? "py-4 bg-[rgba(250,250,248,0.96)] backdrop-blur-md border-b border-[rgba(201,168,76,0.2)] text-[#3D3A35]"
-            : "py-6 bg-transparent text-[#FAFAF8]"
+            ? "py-3 md:py-4 bg-[rgba(250,250,248,0.96)] backdrop-blur-md border-b border-[rgba(201,168,76,0.2)] text-[#3D3A35]"
+            : "py-5 md:py-6 bg-transparent text-[#FAFAF8]"
         }`}
       >
         <Link href="/" className="flex flex-col items-start leading-[1.0] group">

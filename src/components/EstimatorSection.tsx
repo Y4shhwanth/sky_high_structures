@@ -19,7 +19,7 @@ export default function EstimatorSection() {
   }, [area, floors, quality]);
 
   return (
-    <section className="bg-[var(--sky-bg)] py-[120px] px-[8vw]">
+    <section id="estimator" className="bg-[var(--sky-bg)] py-20 md:py-[120px] px-6 md:px-[8vw]">
       <h3 className="font-[var(--font-body)] font-bold text-[11px] uppercase tracking-[0.18em] text-[var(--sky-gold)] mb-4">
         Live Estimator
       </h3>
