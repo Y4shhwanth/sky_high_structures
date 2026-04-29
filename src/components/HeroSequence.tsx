@@ -2,32 +2,66 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 
-const DESKTOP_FRAMES = 240;
-const MOBILE_FRAMES = 80;
+const DESKTOP_FRAMES = 192;
+const MOBILE_FRAMES = 64;
 const INITIAL_BATCH = 30;
+
+const PROJECT_CARDS = [
+  {
+    id: 1,
+    title: "Luxury Villa — ECR Seafront",
+    subtitle: "Coimbatore · Completed 2024",
+    tag: "Residential",
+    img: "/frames/ezgif-frame-020.jpg",
+  },
+  {
+    id: 2,
+    title: "The Meridian Apartments",
+    subtitle: "Saravanampatti · Completed 2023",
+    tag: "Multi-Unit",
+    img: "/frames/ezgif-frame-060.jpg",
+  },
+  {
+    id: 3,
+    title: "Azure Corporate Hub",
+    subtitle: "Peelamedu · Completed 2024",
+    tag: "Commercial",
+    img: "/frames/ezgif-frame-100.jpg",
+  },
+  {
+    id: 4,
+    title: "Garden Terrace Estate",
+    subtitle: "Kovai North · Ongoing",
+    tag: "Premium Villa",
+    img: "/frames/ezgif-frame-140.jpg",
+  },
+  {
+    id: 5,
+    title: "The Skyline Towers",
+    subtitle: "RS Puram · Completed 2022",
+    tag: "High-Rise",
+    img: "/frames/ezgif-frame-170.jpg",
+  },
+];
 
 export default function HeroSequence() {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  const textBlockRef = useRef<HTMLDivElement>(null);
-  const revealingLabelRef = useRef<HTMLDivElement>(null);
-  const backgroundOverlayRef = useRef<HTMLDivElement>(null);
-  const ctaBtnRef = useRef<HTMLButtonElement>(null);
-  const debrisContainerRef = useRef<HTMLDivElement>(null);
+  const frameIndexRef = useRef(1);
+  const imagesRef = useRef<HTMLImageElement[]>([]);
+  const renderRequestedRef = useRef(false);
 
   const [loadedScale, setLoadedScale] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isReducedMotion, setIsReducedMotion] = useState(false);
-  const frameIndexRef = useRef(1);
-  const imagesRef = useRef<HTMLImageElement[]>([]);
-  const renderRequestedRef = useRef(false);
+  const [cardIndex, setCardIndex] = useState(0);
+  const [cardVisible, setCardVisible] = useState(true);
 
   const totalFrames = isMobile ? MOBILE_FRAMES : DESKTOP_FRAMES;
-  const scrollHeight = isMobile ? "300vh" : "600vh";
+  const scrollHeight = isMobile ? "250vh" : "500vh";
 
-  // Detect viewport + reduced motion (client-only)
+  // Detect viewport + reduced motion
   useEffect(() => {
     const mqMobile = window.matchMedia("(max-width: 767px)");
     const mqMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -52,7 +86,7 @@ export default function HeroSequence() {
     [isMobile]
   );
 
-  // Preload — initial batch eager, rest deferred to idle
+  // Preload frames
   useEffect(() => {
     let cancelled = false;
     const images: HTMLImageElement[] = new Array(totalFrames);
@@ -78,44 +112,18 @@ export default function HeroSequence() {
       if (cancelled) return;
       imagesRef.current = images;
       setIsLoaded(true);
-      startEntryAnimation();
+      requestAnimationFrame(() => drawFrame(1));
 
-      // Defer rest
       const remaining = Array.from({ length: totalFrames }, (_, i) => i).slice(INITIAL_BATCH);
       const idle =
         (window as Window & { requestIdleCallback?: (cb: () => void) => number }).requestIdleCallback ??
         ((cb: () => void) => window.setTimeout(cb, 200));
-      idle(() => {
-        remaining.forEach(loadOne);
-      });
+      idle(() => remaining.forEach(loadOne));
     });
 
-    return () => {
-      cancelled = true;
-    };
+    return () => { cancelled = true; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [totalFrames, getFramePath]);
-
-  // Debris
-  useEffect(() => {
-    if (!debrisContainerRef.current) return;
-    const container = debrisContainerRef.current;
-    container.innerHTML = "";
-    for (let i = 0; i < 12; i++) {
-      const d = document.createElement("div");
-      d.style.position = "absolute";
-      d.style.width = `${Math.random() * 8 + 4}px`;
-      d.style.height = `${Math.random() * 12 + 6}px`;
-      d.style.backgroundColor = Math.random() > 0.5 ? "#F5F5F5" : "#D3CDBF";
-      d.style.left = `${45 + Math.random() * 10}%`;
-      d.style.top = `${45 + Math.random() * 10}%`;
-      d.style.opacity = "0";
-      d.style.transform = `scale(${Math.random() + 0.5})`;
-      d.style.willChange = "transform, opacity";
-      d.dataset.vx = String((Math.random() - 0.5) * 800);
-      d.dataset.vy = String((Math.random() - 1.0) * 800);
-      container.appendChild(d);
-    }
-  }, []);
 
   const drawFrame = useCallback((index: number) => {
     const canvas = canvasRef.current;
@@ -138,57 +146,6 @@ export default function HeroSequence() {
     ctx.drawImage(img, 0, 0, img.width, img.height, x, y, img.width * ratio, img.height * ratio);
   }, []);
 
-  const updateParallaxLayers = useCallback((actualIndex: number) => {
-    if (backgroundOverlayRef.current) {
-      const opacity = actualIndex > 120 ? Math.min(0.4, ((actualIndex - 120) / 40) * 0.4) : 0;
-      backgroundOverlayRef.current.style.opacity = opacity.toString();
-    }
-
-    if (textBlockRef.current) {
-      const opacity = actualIndex > 50 ? Math.max(0, 1 - (actualIndex - 50) / 20) : 1;
-      textBlockRef.current.style.opacity = opacity.toString();
-      textBlockRef.current.style.pointerEvents = opacity > 0 ? "auto" : "none";
-    }
-
-    if (revealingLabelRef.current) {
-      let opacity = 0;
-      let translateY = 40;
-      if (actualIndex >= 100 && actualIndex <= 150) {
-        const p = (actualIndex - 100) / 50;
-        opacity = p;
-        translateY = 40 - p * 40;
-      } else if (actualIndex > 150) {
-        opacity = 1;
-        translateY = 0;
-      }
-      revealingLabelRef.current.style.opacity = opacity.toString();
-      revealingLabelRef.current.style.transform = `translateY(${translateY}px)`;
-    }
-
-    if (debrisContainerRef.current) {
-      const explosionProgress = Math.max(0, Math.min(1, (actualIndex - 30) / 60));
-      let globalOpacity = 0;
-      if (actualIndex >= 30 && actualIndex <= 90) globalOpacity = Math.sin(explosionProgress * Math.PI);
-
-      const items = debrisContainerRef.current.children;
-      for (let i = 0; i < items.length; i++) {
-        const el = items[i] as HTMLElement;
-        const vx = parseFloat(el.dataset.vx || "0");
-        const vy = parseFloat(el.dataset.vy || "0");
-        el.style.transform = `translate(${vx * explosionProgress}px, ${vy * explosionProgress}px)`;
-        el.style.opacity = globalOpacity.toString();
-      }
-    }
-
-    if (ctaBtnRef.current) {
-      ctaBtnRef.current.classList.toggle("pulse-glow", actualIndex === 240);
-    }
-
-    if (actualIndex === 70) window.dispatchEvent(new CustomEvent("heroExplodeComplete"));
-    if (actualIndex === 150) window.dispatchEvent(new CustomEvent("heroCutawayComplete"));
-    if (actualIndex === 240) window.dispatchEvent(new CustomEvent("heroHoldComplete"));
-  }, []);
-
   const handleScroll = useCallback(() => {
     if (!containerRef.current || isReducedMotion) return;
     const scrollTop = window.scrollY;
@@ -201,141 +158,269 @@ export default function HeroSequence() {
       requestAnimationFrame(() => {
         drawFrame(index);
         frameIndexRef.current = index;
-        updateParallaxLayers(isMobile ? index * 3 : index);
         renderRequestedRef.current = false;
       });
     }
-  }, [isReducedMotion, totalFrames, isMobile, drawFrame, updateParallaxLayers]);
+  }, [isReducedMotion, totalFrames, drawFrame]);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
 
+  // Reduced motion: auto-play
   useEffect(() => {
     if (isLoaded && isReducedMotion) {
       let current = 1;
       const interval = setInterval(() => {
         current++;
-        if (current > totalFrames) {
-          clearInterval(interval);
-          return;
-        }
+        if (current > totalFrames) { clearInterval(interval); return; }
         drawFrame(current);
         frameIndexRef.current = current;
-        updateParallaxLayers(isMobile ? current * 3 : current);
       }, 50);
       return () => clearInterval(interval);
     }
-  }, [isLoaded, isReducedMotion, totalFrames, isMobile, drawFrame, updateParallaxLayers]);
+  }, [isLoaded, isReducedMotion, totalFrames, drawFrame]);
 
-  const startEntryAnimation = () => {
-    requestAnimationFrame(() => {
-      drawFrame(1);
-      updateParallaxLayers(1);
-    });
-
+  // Card navigation
+  const goCard = (dir: 1 | -1) => {
+    setCardVisible(false);
     setTimeout(() => {
-      const eyebrow = document.querySelector(".eyebrow-anim") as HTMLElement | null;
-      const lines = document.querySelectorAll(".headline-line");
-      const hr = document.querySelector(".gold-hr") as HTMLElement | null;
-
-      if (eyebrow) eyebrow.style.letterSpacing = "0.15em";
-      lines.forEach((l, i) => {
-        setTimeout(() => {
-          (l as HTMLElement).style.opacity = "1";
-          (l as HTMLElement).style.transform = "translateY(0)";
-        }, i * 150 + 200);
-      });
-      if (hr) {
-        setTimeout(() => {
-          hr.style.width = "75%";
-        }, 800);
-      }
+      setCardIndex((prev) => (prev + dir + PROJECT_CARDS.length) % PROJECT_CARDS.length);
+      setCardVisible(true);
     }, 200);
   };
 
+  const card = PROJECT_CARDS[cardIndex];
+
   return (
     <>
+      {/* Loading screen */}
       {!isLoaded && (
-        <div className="fixed inset-0 z-[9999] bg-white flex flex-col items-center justify-center px-6">
-          <div className="uppercase tracking-[0.15em] text-[12px] sm:text-[14px] font-bold mb-5 text-center">
-            Loading Architecture sequence
+        <div className="fixed inset-0 z-[9999] bg-[#0D1117] flex flex-col items-center justify-center px-6">
+          <div
+            className="text-white uppercase tracking-[0.2em] text-[11px] font-semibold mb-6"
+            style={{ fontFamily: "var(--font-body)" }}
+          >
+            Sky High Structures
           </div>
-          <div className="w-full max-w-[300px] h-[2px] bg-[#E5E5E5]">
+          <div className="w-[220px] h-[2px] bg-white/10 rounded-full overflow-hidden">
             <div
-              className="h-full bg-[var(--sky-dark)] transition-[width] duration-100 ease-linear"
+              className="h-full bg-white transition-[width] duration-150 ease-linear"
               style={{ width: `${loadedScale * 100}%` }}
             />
+          </div>
+          <div className="mt-4 text-white/40 text-[11px] tracking-widest uppercase">
+            Loading…
           </div>
         </div>
       )}
 
       <div ref={containerRef} id="hero" style={{ height: scrollHeight, position: "relative" }}>
-        <div className="sticky top-0 h-screen overflow-hidden bg-white">
-          <canvas ref={canvasRef} className="absolute inset-0 w-screen h-screen z-0" />
+        <div className="sticky top-0 h-screen overflow-hidden">
 
+          {/* Canvas — frame sequence */}
+          <canvas ref={canvasRef} className="absolute inset-0 w-full h-full z-0 object-cover" />
+
+          {/* Dark gradient overlay — ensures text legibility */}
           <div
-            ref={backgroundOverlayRef}
             className="absolute inset-0 z-[1] pointer-events-none"
-            style={{ background: "linear-gradient(to bottom, transparent, rgba(0,0,0,0.6))", opacity: 0, willChange: "opacity" }}
+            style={{
+              background:
+                "linear-gradient(to right, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0.15) 100%)",
+            }}
+          />
+          {/* Bottom fade */}
+          <div
+            className="absolute bottom-0 left-0 right-0 h-32 z-[1] pointer-events-none"
+            style={{ background: "linear-gradient(to top, rgba(0,0,0,0.5), transparent)" }}
           />
 
-          <div ref={debrisContainerRef} className="absolute inset-0 z-[2] pointer-events-none" />
+          {/* ─── Main content layout ─── */}
+          <div className="relative z-[3] h-full flex items-center px-6 sm:px-10 lg:px-16 xl:px-24">
+            <div className="w-full max-w-screen-xl mx-auto flex flex-col lg:flex-row items-center lg:items-end justify-between gap-10 lg:gap-6 pb-16 lg:pb-24">
 
-          {/* Hero text */}
-          <div
-            ref={textBlockRef}
-            className="absolute top-1/2 left-6 right-6 sm:left-[8vw] sm:right-auto -translate-y-1/2 z-[3] sm:max-w-[600px]"
-            style={{ pointerEvents: "none", willChange: "opacity" }}
-          >
-            <div className="eyebrow-anim text-[10px] sm:text-[12px] uppercase font-bold text-[var(--sky-dark)] mb-4 sm:mb-5">
-              COIMBATORE&apos;S PREMIER BUILDERS
+              {/* LEFT — Headline + sub */}
+              <div className="flex-1 max-w-[560px]">
+                {/* Eyebrow */}
+                <p
+                  className="text-white/60 uppercase tracking-[0.18em] text-[11px] sm:text-[12px] font-semibold mb-5"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  Coimbatore&apos;s Premier Builders
+                </p>
+
+                {/* Big headline */}
+                <h1
+                  className="text-white font-bold leading-[1.0] m-0"
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: "clamp(42px, 7vw, 80px)",
+                    textShadow: "0 2px 24px rgba(0,0,0,0.5)",
+                    letterSpacing: "-0.02em",
+                  }}
+                >
+                  We Build<br />More Than<br />
+                  <span style={{ color: "var(--sky-gold)" }}>Structures.</span>
+                </h1>
+
+                {/* Divider */}
+                <div
+                  className="my-6 sm:my-8"
+                  style={{ width: 56, height: 3, background: "var(--sky-gold)", borderRadius: 2 }}
+                />
+
+                {/* Subtext */}
+                <p
+                  className="text-white/80 leading-relaxed m-0"
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: "clamp(14px, 1.4vw, 18px)",
+                    maxWidth: 420,
+                    textShadow: "0 1px 8px rgba(0,0,0,0.4)",
+                  }}
+                >
+                  At Sky High Structures, we partner with families and businesses to
+                  bring their ambitions to life — delivering homes and spaces that make
+                  a lasting, meaningful difference.
+                </p>
+
+                {/* CTA */}
+                <button
+                  onClick={() => document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" })}
+                  className="mt-8 sm:mt-10 inline-flex items-center gap-3 text-white font-semibold uppercase tracking-[0.1em] text-[12px] sm:text-[13px] border border-white/40 hover:border-[var(--sky-gold)] hover:text-[var(--sky-gold)] transition-all duration-300 px-7 py-4 bg-white/5 hover:bg-white/10 backdrop-blur-sm"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  Explore Our Work
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* RIGHT — Project cards carousel */}
+              <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
+                {/* Prev arrow */}
+                <button
+                  onClick={() => goCard(-1)}
+                  aria-label="Previous project"
+                  className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/25 backdrop-blur-sm flex items-center justify-center text-white transition-all duration-200 border border-white/20"
+                >
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+
+                {/* Card */}
+                <div
+                  className="relative bg-white rounded-2xl overflow-hidden shadow-2xl"
+                  style={{
+                    width: 290,
+                    opacity: cardVisible ? 1 : 0,
+                    transform: cardVisible ? "translateY(0)" : "translateY(10px)",
+                    transition: "opacity 0.2s ease, transform 0.2s ease",
+                  }}
+                >
+                  {/* Card image */}
+                  <div className="relative overflow-hidden" style={{ height: 180 }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={card.img}
+                      alt={card.title}
+                      className="w-full h-full object-cover"
+                      style={{ transition: "transform 0.6s ease" }}
+                      onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
+                      onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+                    />
+                    {/* Tag badge */}
+                    <div
+                      className="absolute top-3 left-3 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white rounded-full"
+                      style={{ background: "var(--sky-gold)", letterSpacing: "0.12em" }}
+                    >
+                      {card.tag}
+                    </div>
+                  </div>
+
+                  {/* Card body */}
+                  <div className="px-5 pt-4 pb-5">
+                    <h3
+                      className="m-0 leading-snug font-bold text-[var(--sky-dark)]"
+                      style={{ fontFamily: "var(--font-body)", fontSize: 15 }}
+                    >
+                      {card.title}
+                    </h3>
+                    <p
+                      className="mt-1 m-0 text-[var(--sky-muted)]"
+                      style={{ fontFamily: "var(--font-body)", fontSize: 12 }}
+                    >
+                      {card.subtitle}
+                    </p>
+
+                    {/* Dots + Arrow row */}
+                    <div className="mt-4 flex items-center justify-between">
+                      {/* Dots */}
+                      <div className="flex items-center gap-[5px]">
+                        {PROJECT_CARDS.map((_, i) => (
+                          <button
+                            key={i}
+                            onClick={() => { setCardVisible(false); setTimeout(() => { setCardIndex(i); setCardVisible(true); }, 200); }}
+                            aria-label={`Go to project ${i + 1}`}
+                            style={{
+                              width: i === cardIndex ? 20 : 6,
+                              height: 6,
+                              borderRadius: 4,
+                              background: i === cardIndex ? "var(--sky-gold)" : "#D1CFC9",
+                              border: "none",
+                              padding: 0,
+                              cursor: "pointer",
+                              transition: "width 0.3s ease, background 0.3s ease",
+                            }}
+                          />
+                        ))}
+                      </div>
+
+                      {/* Arrow button */}
+                      <button
+                        onClick={() => document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" })}
+                        aria-label="View project"
+                        className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200"
+                        style={{ background: "var(--sky-gold)" }}
+                        onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.transform = "scale(1.1)"; }}
+                        onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.transform = "scale(1)"; }}
+                      >
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                          <path d="M2 7h10M7 2l5 5-5 5" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Next arrow */}
+                <button
+                  onClick={() => goCard(1)}
+                  aria-label="Next project"
+                  className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/25 backdrop-blur-sm flex items-center justify-center text-white transition-all duration-200 border border-white/20"
+                >
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M6 3l5 5-5 5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+              </div>
             </div>
-            <div className="flex flex-col gap-1">
-              <h1 className="hero-font headline-line m-0 leading-[0.95] text-[var(--sky-dark)] font-light italic text-[clamp(36px,9vw,72px)]">
-                We Don&apos;t Just
-              </h1>
-              <h1 className="hero-font headline-line m-0 leading-[0.95] text-[var(--sky-dark)] font-semibold text-[clamp(36px,9vw,72px)]">
-                Build Walls.
-              </h1>
-              <h1 className="hero-font headline-line m-0 leading-[0.95] text-[var(--sky-gold)] font-light italic text-[clamp(36px,9vw,72px)]">
-                We Build Legacies.
-              </h1>
-            </div>
-
-            <div className="gold-hr h-px bg-[var(--sky-gold)] my-8 sm:my-10" />
-
-            <p className="headline-line m-0 text-[14px] sm:text-[18px] text-[var(--sky-text)]">
-              12 years. 150 homes. Zero compromises.
-            </p>
           </div>
-
-          {/* Revealing label — desktop only, would crowd mobile hero */}
-          <div
-            ref={revealingLabelRef}
-            className="hidden md:flex absolute top-[25%] right-[15%] z-[4] items-center gap-4 opacity-0 pointer-events-none"
-            style={{ willChange: "transform, opacity" }}
-          >
-            <div className="w-10 h-px bg-[var(--sky-gold)]" />
-            <span className="text-[12px] font-bold uppercase tracking-[0.15em] text-[var(--sky-gold)]">
-              Revealing Interior
-            </span>
-          </div>
-
-          {/* CTA */}
-          <button
-            ref={ctaBtnRef}
-            onClick={() => document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" })}
-            className="absolute bottom-[12%] left-6 right-6 sm:left-[8vw] sm:right-auto z-[5] py-4 sm:py-5 px-6 sm:px-10 bg-[var(--sky-dark)] hover:bg-[var(--sky-gold)] hover:text-[var(--sky-dark)] text-white text-[12px] sm:text-[14px] font-bold tracking-[0.1em] uppercase transition-colors"
-          >
-            Explore Our Work →
-          </button>
 
           {/* Scroll hint */}
-          <div className="hidden sm:flex absolute bottom-[10%] left-1/2 -translate-x-1/2 z-[6] flex-col items-center">
-            <span className="text-[12px] uppercase tracking-[0.1em] text-[var(--sky-dark)] opacity-70">↓ Scroll to reveal</span>
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-[4] flex flex-col items-center gap-2 pointer-events-none">
+            <span
+              className="text-white/50 uppercase tracking-[0.14em]"
+              style={{ fontFamily: "var(--font-body)", fontSize: 10 }}
+            >
+              Scroll to explore
+            </span>
+            <div className="w-px h-8 bg-white/30 animate-bounce" />
           </div>
+
         </div>
       </div>
     </>
